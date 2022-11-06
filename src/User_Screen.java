@@ -11,10 +11,10 @@ public class User_Screen extends JFrame{
 	
 	public User_Screen(){
 		setDisplay();
-		setBasepanel();
+		setBasePanel();
 	}
 	
-	public void setBasepanel() {
+	public void setBasePanel() {
 		top = new JPanel();
 		add(top);
 		top.setVisible(true);
@@ -25,12 +25,14 @@ public class User_Screen extends JFrame{
 		mid = new JPanel();
 		add(mid);
 		mid.setBackground(Color.CYAN);
-		mid.setBounds(0, 50, 700, 425);
+		mid.setBounds(0, 50, 700, 400);
 		
 		bot = new JPanel();
 		add(bot);
 		bot.setBackground(Color.GRAY);
-		mid.setBounds(0, 500, 700, 425);
+		mid.setBounds(0, 450, 700, 450);
+	}
+	public void setSubPanel() {
 		
 	}
 
