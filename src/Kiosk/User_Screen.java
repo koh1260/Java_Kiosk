@@ -1,3 +1,4 @@
+package Kiosk;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -44,7 +45,7 @@ public class User_Screen extends JFrame{
 		basket = new JPanel();
 		add(basket);
 		basket.setBounds(0,500, 500, 400 );
-		basket.setBackground(Color.gray);
+		basket.setBackground(Color.LIGHT_GRAY);
 		basket.setLayout(new BoxLayout(basket, BoxLayout.Y_AXIS));
 		
 		control_panel = new JPanel();
@@ -58,6 +59,8 @@ public class User_Screen extends JFrame{
 		for(int i = 0; i < 6; i++) {
 			menus[i] = new JButton("menu" + Integer.toString(i+1));
 			menus[i].setSize(30,30);
+			menus[i].setBorderPainted(false);
+			menus[i].setFocusPainted(false);
 			menu_panel.add(menus[i]);
 		}
 	}
