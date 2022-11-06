@@ -23,8 +23,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	public void b_setting() {
 		b.setBounds(0,0,700, 900);
 		b.setBorderPainted(false);
-		b.setFocusPainted(false);
-		
+		b.setFocusPainted(false);	
 	}
 	
 	public void setDisplay() {		
