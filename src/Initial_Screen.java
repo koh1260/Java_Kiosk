@@ -1,23 +1,31 @@
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Initial_Screen extends JFrame implements ActionListener{
 	private JButton b; 
-	
+
 	public Initial_Screen(){
 		init();
 		setDisplay();
-
-		b.setBounds(0,0,700, 900);
-		
+		b_setting();
 		addActionEvent();
 	}
+	
 	private void init() {
-		b = new JButton("Tap to next Screen");
+		b = new JButton(new ImageIcon("../images/test.png"));
 	}
+	public void b_setting() {
+		b.setBounds(0,0,700, 900);
+		b.setBorderPainted(false);
+		b.setFocusPainted(false);
+	}
+	
 	public void setDisplay() {		
 		setTitle("초기 화면");
 		setVisible(true);
@@ -29,6 +37,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 		
 		add(b);
 	}
+	
 	public void addActionEvent() {
 		b.addActionListener(this);
 	}

@@ -37,6 +37,13 @@ public class Login_Screen extends JFrame implements ActionListener{
 	    setDisplay();
 	    setLocationAndSize();
 	    addActionEvent();
+	    
+		add(userLabel);
+		add(Pw);
+		add(userTextF);
+		add(PwF);
+		add(LoginB);
+		add(Sign_upB);
 	}
 	
 	
@@ -51,13 +58,6 @@ public class Login_Screen extends JFrame implements ActionListener{
 	
 	//화면 구성. 
 	public void setDisplay() {
-		add(userLabel);
-		add(Pw);
-		add(userTextF);
-		add(PwF);
-		add(LoginB);
-		add(Sign_upB);
-		
 	    setTitle("로그인 화면");
 		setVisible(true);
 		setSize(700, 900);
