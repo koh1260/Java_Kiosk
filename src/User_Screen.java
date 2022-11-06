@@ -4,8 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class User_Screen extends JFrame{
-	private static JLabel user;
-	
 	public User_Screen(){
 		setDisplay();
 	}
@@ -17,7 +15,7 @@ public class User_Screen extends JFrame{
 		setSize(700, 900);
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 		setLocationRelativeTo(null);
 	}
 }
