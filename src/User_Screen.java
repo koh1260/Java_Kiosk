@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class User_Screen extends JFrame{
 	int num = 1;
+	private JPanel logo;
 	private JPanel menu_panel;
 	private JPanel basket;
 	private JPanel control_panel;
@@ -28,10 +29,15 @@ public class User_Screen extends JFrame{
 	}
 
 	public void setPanel() {
+		logo = new JPanel();
+		add(logo);
+		logo.setBounds(0,0,700,40);
+		logo.setBackground(Color.LIGHT_GRAY);
+		
 		menu_panel = new JPanel();
 		add(menu_panel);
 
-		menu_panel.setBounds(43,50,600, 400);
+		menu_panel.setBounds(43,71,600, 400);
 //		menu_panel.setBackground(Color.LIGHT_GRAY);
 		menu_panel.setLayout(new GridLayout(2,3,40,40));
 
@@ -50,7 +56,7 @@ public class User_Screen extends JFrame{
 		menus = new JButton[6];
 		
 		for(int i = 0; i < 6; i++) {
-			menus[i] = new JButton("menu" + Integer.toString(i));
+			menus[i] = new JButton("menu" + Integer.toString(i+1));
 			menus[i].setSize(30,30);
 			menu_panel.add(menus[i]);
 		}
