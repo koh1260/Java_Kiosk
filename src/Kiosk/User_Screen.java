@@ -1,5 +1,6 @@
 package Kiosk;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -9,7 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class User_Screen extends JFrame{
+	
 	int num = 1;
 	private JPanel logo;
 	private JPanel menu_panel;
@@ -21,6 +24,36 @@ public class User_Screen extends JFrame{
 	private JButton pay_btn;
 	
 	private JButton[] menus;
+	
+	public class basket_panel extends JPanel{
+		private basket_menu[] basket_menus = new basket_menu[7];
+		
+		public basket_panel() {
+			setLayout(new GridLayout(7,1));
+			setBackground(Color.BLUE);
+			
+			for(int i = 0 ; i < 7; i++) {
+				 basket_menus[i] = new basket_menu();
+				 add(basket_menus[i]);
+			}
+		}
+	}
+	
+	public class basket_menu extends JPanel{ //width: 500 height: 400
+		private JButton plus = new JButton("+");
+		private JButton minus = new JButton("-"); 
+		private JLabel counts = new JLabel("1");
+		private JLabel menu_name = new JLabel("라면");
+		
+		public basket_menu() { //height: 57
+			setLayout(new FlowLayout());
+			add(plus);
+			add(minus);
+			add(counts);
+			add(menu_name);
+			setBackground(Color.LIGHT_GRAY);
+		}
+	}
 	
 	public User_Screen(){
 		setDisplay();
@@ -42,11 +75,10 @@ public class User_Screen extends JFrame{
 //		menu_panel.setBackground(Color.LIGHT_GRAY);
 		menu_panel.setLayout(new GridLayout(2,3,40,40));
 
-		basket = new JPanel();
-		add(basket);
-		basket.setBounds(0,500, 500, 400 );
-		basket.setBackground(Color.LIGHT_GRAY);
-		basket.setLayout(new BoxLayout(basket, BoxLayout.Y_AXIS));
+		basket_panel basket_panel = new basket_panel();
+//		basket = new JPanel();
+		add(basket_panel);
+		basket_panel.setBounds(0,500, 500, 362 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
