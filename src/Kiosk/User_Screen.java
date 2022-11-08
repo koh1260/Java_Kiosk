@@ -25,6 +25,7 @@ public class User_Screen extends JFrame{
 	
 	private JButton[] menus;
 	
+	//--------------------------------장바구니---------------------------------
 	public class basket_panel extends JPanel{
 		private basket_menu[] basket_menus = new basket_menu[7];
 		
@@ -54,6 +55,7 @@ public class User_Screen extends JFrame{
 			setBackground(Color.LIGHT_GRAY);
 		}
 	}
+	//--------------------------------장바구니---------------------------------
 	
 	public User_Screen(){
 		setDisplay();
@@ -78,7 +80,7 @@ public class User_Screen extends JFrame{
 		basket_panel basket_panel = new basket_panel();
 //		basket = new JPanel();
 		add(basket_panel);
-		basket_panel.setBounds(0,500, 500, 362 );
+		basket_panel.setBounds(0,500, 500, 375 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
