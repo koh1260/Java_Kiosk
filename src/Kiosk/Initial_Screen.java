@@ -19,7 +19,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	}
 	
 	private void init() {
-		b = new JButton(new ImageIcon("../images/init_test.png"));
+		b = new JButton(new ImageIcon("images/init.png"));
 	}
 	public void b_setting() {
 		b.setBounds(0,0,700, 900);
