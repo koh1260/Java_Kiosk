@@ -5,18 +5,34 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 
 public class User_Screen extends JFrame{
+	private static Connection con;
+	private static PreparedStatement ps1;
+	private static ResultSet rs1;
+	private static PreparedStatement ps2;
+	private static ResultSet rs2;
 	
+	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
+	private static String db_user = "root";
+	private static String db_pw = "1306";
+	
+	int menu_panel_num = -1;
 	int num = 1;
 	private JPanel logo;
 	private JPanel menu_panel;
@@ -29,6 +45,15 @@ public class User_Screen extends JFrame{
 	private JButton pay_btn;
 	
 	private JButton[] menus;
+	
+	//--------------------------------생성자----------------------------------
+	public User_Screen(){
+//		SqlQuery();
+		setDisplay();
+		setPanel();
+		setControlPanel();
+		menuBtn();
+	}
 	
 	
 	 private static class RoundedBorder implements Border {
@@ -89,7 +114,6 @@ public class User_Screen extends JFrame{
 			setBackground(Color.LIGHT_GRAY);
 		}
 	}
-	//--------------------------------장바구니---------------------------------
 	
 	//--------------------------------메뉴 목록---------------------------------
 	public class Menus_panel extends JPanel {
@@ -97,7 +121,7 @@ public class User_Screen extends JFrame{
 		
 		public Menus_panel() {
 			setLayout(new GridLayout(2,3, 55, 25));
-			setBorder(BorderFactory.createEmptyBorder(35,35,35,35));
+			setBorder(BorderFactory.createEmptyBorder(10,15,20,15));
 //			setBackground(Color.CYAN);
 			for(int i = 0;i < 6; i++) {
 				menu_panels[i] = new Menu_panel();
@@ -114,28 +138,39 @@ public class User_Screen extends JFrame{
 			setLayout(null);			
 			setBackground(Color.LIGHT_GRAY);
 			
-			add(menu_icon = new JLabel(img));
+			add(menu_icon = new JLabel());
 			menu_icon.setOpaque(true); //true 때만 옵션 지정 가
-			menu_icon.setBounds(0,0,172,150);
-			menu_icon.setBackground(Color.LIGHT_GRAY);
+			menu_icon.setBounds(0,0,186,150);
+			menu_icon.setBackground(Color.YELLOW);
 			
 			add(menu_btns[0] = new JButton("선택"));
-			menu_btns[0].setBounds(0, 150, 86, 35);
+			menu_btns[0].setBounds(0, 169, 94, 35);
 			add(menu_btns[1] = new JButton("영양 성분"));
-			menu_btns[1].setBounds(86, 150, 86, 35);
+			menu_btns[1].setBounds(92, 169, 94, 35);
 
 		}
 	}
-	//--------------------------------메뉴 목록---------------------------------
-	
-	
-	
-	public User_Screen(){
-		setDisplay();
-		setPanel();
-		setControlPanel();
-		menuBtn();
-	}
+
+	//---------------------------MySQL 연동, 쿼리 작성----------------------------
+//	public void SqlQuery() {
+//		try {
+//			con = DriverManager.getConnection(db_url, db_user, db_pw);
+//			ps1 = con.prepareStatement("select PW from userAccount where ID=?");
+//			ps1.setString(1, userID.trim());
+//			rs1 = ps1.executeQuery();
+//			
+//			ps2 = con.prepareStatement("select PW from adminAccount where ID=?");
+//			ps2.setString(1, userID.trim());
+//			rs2 = ps2.executeQuery();
+//			
+//			System.out.println("연결 성공.");
+//			
+//			
+//		}catch(SQLException e1) {
+////			System.out.println("연결 실패.");
+//			e1.printStackTrace();
+//		}
+//	}
 
 	public void setPanel() {
 		logo = new JPanel();
@@ -228,6 +263,7 @@ public class User_Screen extends JFrame{
 
 	public void setDisplay() {		
 		setTitle("주문창");
+//		setUndecorated(true);
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);
