@@ -3,7 +3,7 @@ package Kiosk;
 public class Menu {
 	String name;
 	int count = 0;
-	int car;
+	int carbo;
 	int protein;
 	int fat;
 	int kcal;
@@ -29,12 +29,12 @@ public class Menu {
 		this.count = count;
 	}
 
-	public int getCar() {
-		return car;
+	public int getCarbo() {
+		return carbo;
 	}
 
-	public void setCar(int car) {
-		this.car = car;
+	public void setCarbo(int car) {
+		this.carbo = car;
 	}
 
 	public int getProtein() {

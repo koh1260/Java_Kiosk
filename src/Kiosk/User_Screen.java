@@ -23,15 +23,14 @@ import javax.swing.border.Border;
 
 public class User_Screen extends JFrame{
 	private static Connection con;
-	private static PreparedStatement ps1;
-	private static ResultSet rs1;
-	private static PreparedStatement ps2;
-	private static ResultSet rs2;
+	private static PreparedStatement ps;
+	private static ResultSet rs;
 	
 	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
+	Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
 	private JPanel logo;
@@ -91,7 +90,9 @@ public class User_Screen extends JFrame{
 			for(int i = 0 ; i < 7; i++) {
 				 basket_menus[i] = new basket_menu();
 				 add(basket_menus[i]);
+				 basket_menus[i].setVisible(false);
 			}
+//			basket_menus[6].setVisible(true);
 		}
 	}
 	public class basket_col extends JPanel{
@@ -132,6 +133,7 @@ public class User_Screen extends JFrame{
 	public class Menu_panel extends JPanel {
 		JButton[] menu_btns = new JButton[2];
 		JLabel menu_icon;
+		JLabel menu_name;
 		ImageIcon img = new ImageIcon("images/meal.jpeg");
 		
 		public Menu_panel() {
@@ -143,6 +145,9 @@ public class User_Screen extends JFrame{
 			menu_icon.setBounds(0,0,186,150);
 			menu_icon.setBackground(Color.YELLOW);
 			
+			add(menu_name);
+			
+			
 			add(menu_btns[0] = new JButton("선택"));
 			menu_btns[0].setBounds(0, 169, 94, 35);
 			add(menu_btns[1] = new JButton("영양 성분"));
@@ -152,25 +157,33 @@ public class User_Screen extends JFrame{
 	}
 
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
-//	public void SqlQuery() {
-//		try {
-//			con = DriverManager.getConnection(db_url, db_user, db_pw);
-//			ps1 = con.prepareStatement("select PW from userAccount where ID=?");
-//			ps1.setString(1, userID.trim());
-//			rs1 = ps1.executeQuery();
-//			
-//			ps2 = con.prepareStatement("select PW from adminAccount where ID=?");
-//			ps2.setString(1, userID.trim());
-//			rs2 = ps2.executeQuery();
-//			
-//			System.out.println("연결 성공.");
-//			
-//			
-//		}catch(SQLException e1) {
-////			System.out.println("연결 실패.");
-//			e1.printStackTrace();
-//		}
-//	}
+	public void SqlQuery() {
+		try {
+			con = DriverManager.getConnection(db_url, db_user, db_pw);
+			
+			for(int i = 0 ; i < 6; i++) {
+				ps = con.prepareStatement("select * from menu where menu_num=?");
+				ps.setInt(1, (i+1));
+				rs = ps.executeQuery();
+			
+				if(rs.next()) {
+					Menus[i].setName(rs.getString("menu_num"));
+					Menus[i].setPrice(rs.getInt("menu_price"));
+					Menus[i].setCarbo(rs.getInt("menu_carbo"));
+					Menus[i].setProtein(rs.getInt("menu_proetin"));
+					Menus[i].setFat(rs.getInt("menu_fat"));
+					Menus[i].setKcal(rs.getInt("menu_kcal"));
+				}
+			}
+			System.out.println("연결 성공.");
+			
+			
+		}catch(SQLException e1) {
+//			System.out.println("연결 실패.");
+			e1.printStackTrace();
+		}
+	}
+	//---------------------------MySQL 연동, 쿼리 작성----------------------------
 
 	public void setPanel() {
 		logo = new JPanel();
