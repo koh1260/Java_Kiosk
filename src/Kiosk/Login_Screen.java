@@ -105,8 +105,8 @@ public class Login_Screen extends JFrame implements ActionListener{
 					
 					if(rs1.next()) {
 						if(PW.equals(rs1.getString(1))) {
-							User_Screen u = new User_Screen();
-							u.setVisible(true);
+							new User_Screen();
+//							User_Screen u = new User_Screen();
 							setVisible(false);
 						}else {
 							JOptionPane.showMessageDialog(this, "비밀번호가 틀렸습니다.");
