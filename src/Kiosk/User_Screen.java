@@ -37,6 +37,9 @@ public class User_Screen extends JFrame{
 	private Menus_panel menus_panel;
 	private basket_panel basket_panel;
 	
+	public static int j;
+	private int[] menu_num_list = new int[6];
+	private int menu_num;
 	private int menu_state = -1;
 	private int total = 0;
 	private JLabel total_count;
@@ -68,11 +71,120 @@ public class User_Screen extends JFrame{
 			setBackground(Color.LIGHT_GRAY);
 //			setBorder(new RoundedBorder(50));
 			
-			for(int i = 0 ; i < 7; i++) {
+			for(int i = 0 ; i < 6; i++) {
 				 basket_menus[i] = new basket_menu();
 				 add(basket_menus[i]);
 				 basket_menus[i].setVisible(false);
 			}
+			basket_menus[0].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[0].index = menu_num_list[0];
+					Menus[menu_num_list[0]].setCount(Menus[menu_num_list[0]].getCount()+1);
+					basket_menus[0].setCounts();
+					basket_menus[0].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[0]].getPrice();
+				}
+			});
+			basket_menus[1].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[1].index = menu_num_list[1];
+					Menus[menu_num_list[1]].setCount(Menus[menu_num_list[1]].getCount()+1);
+					basket_menus[1].setCounts();
+					basket_menus[1].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[1]].getPrice();
+				}
+			});
+			basket_menus[2].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[2].index = menu_num_list[2];
+					Menus[menu_num_list[2]].setCount(Menus[menu_num_list[2]].getCount()+1);
+					basket_menus[2].setCounts();
+					basket_menus[2].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[2]].getPrice();
+				}
+			});
+			basket_menus[3].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[3].index = menu_num_list[3];
+					Menus[menu_num_list[3]].setCount(Menus[menu_num_list[3]].getCount()+1);
+					basket_menus[3].setCounts();
+					basket_menus[3].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[3]].getPrice();
+				}
+			});
+			basket_menus[4].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[4].index = menu_num_list[4];
+					Menus[menu_num_list[4]].setCount(Menus[menu_num_list[4]].getCount()+1);
+					basket_menus[4].setCounts();
+					basket_menus[4].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[4]].getPrice();
+				}
+			});
+			basket_menus[5].plus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[5].index = menu_num_list[5];
+					Menus[menu_num_list[5]].setCount(Menus[menu_num_list[5]].getCount()+1);
+					basket_menus[5].setCounts();
+					basket_menus[5].setPrice();
+					total++;
+					total_money += Menus[menu_num_list[5]].getPrice();
+				}
+			});
+			
+			basket_menus[0].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[0].index = menu_num_list[0];
+					basket_menus[0].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[0]].getPrice();
+				}
+			});
+			basket_menus[1].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[1].index = menu_num_list[1];
+					basket_menus[1].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[1]].getPrice();
+				}
+			});
+			basket_menus[2].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[2].index = menu_num_list[2];
+					basket_menus[2].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[2]].getPrice();
+				}
+			});
+			basket_menus[3].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[3].index = menu_num_list[3];
+					basket_menus[3].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[3]].getPrice();
+				}
+			});
+			basket_menus[4].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[4].index = menu_num_list[4];
+					basket_menus[4].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[4]].getPrice();
+				}
+			});
+			basket_menus[5].minus.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					basket_menus[5].index = menu_num_list[5];
+					basket_menus[5].Minus();
+					total--;
+					total_money -= Menus[menu_num_list[5]].getPrice();
+				}
+			});
 //			basket_menus[6].setVisible(true);
 		}
 	}
@@ -80,20 +192,37 @@ public class User_Screen extends JFrame{
 		JLabel menu_name;
 	}
 	public class basket_menu extends JPanel{ //width: 500 height: 400
-		private JButton plus = new JButton("+");
-		private JButton minus = new JButton("-"); 
-		private JLabel counts = new JLabel("1");
-		private JLabel menu_name = new JLabel("라면");
-		private JLabel price = new JLabel("1000원");
+		int index;
+		int count = 0;
+		JButton plus = new JButton("+");
+		JButton minus = new JButton("-"); 
+		JLabel counts = new JLabel();
+		JLabel menu_name = new JLabel();
+		JLabel price = new JLabel();
 		
 		public basket_menu() { //height: 57
 			setLayout(new FlowLayout());
 			add(menu_name);
 			add(plus);
+			
 			add(counts);
 			add(minus);
 			add(price);
 			setBackground(Color.LIGHT_GRAY);
+		}
+		public void setCounts() {
+			counts.setText(Menus[index].getCount()+"");
+		}
+		public void setPrice() {
+			price.setText(Menus[index].getCount() * Menus[index].getPrice() + "원");
+		}
+		public void setMenuName() {
+			menu_name.setText(Menus[index].getName());
+		}
+		public void Minus() {
+			Menus[index].setCount(Menus[index].getCount() - 1);
+			setPrice();
+			setCounts();
 		}
 	}
 	
@@ -109,11 +238,20 @@ public class User_Screen extends JFrame{
 				menu_panels[i] = new Menu_panel();
 				add(menu_panels[i]);
 			}
+			
 			menu_panels[0].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[0].setCount(Menus[0].getCount() + 1);
+					System.out.println(Menus[0].getCount());
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 0;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[0].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[0].getPrice();
+					menu_num_list[menu_state] = 0;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[0].menu_btns[0].setEnabled(false);
 				}
@@ -121,8 +259,16 @@ public class User_Screen extends JFrame{
 			menu_panels[1].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[1].setCount(Menus[1].getCount() + 1);
+					System.out.println(Menus[1].getCount());
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 1;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[1].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[1].getPrice();
+					menu_num_list[menu_state] = 1;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[1].menu_btns[0].setEnabled(false);
 				}
@@ -130,8 +276,16 @@ public class User_Screen extends JFrame{
 			menu_panels[2].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[2].setCount(Menus[2].getCount() + 1);
+					System.out.println(Menus[2].getCount());
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 2;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[2].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[2].getPrice();
+					menu_num_list[menu_state] = 2;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[2].menu_btns[0].setEnabled(false);
 				}
@@ -139,8 +293,16 @@ public class User_Screen extends JFrame{
 			menu_panels[3].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[3].setCount(Menus[3].getCount() + 1);
+					System.out.println(Menus[3].getCount());
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 3;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[3].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[3].getPrice();
+					menu_num_list[menu_state] = 3;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[3].menu_btns[0].setEnabled(false);
 				}
@@ -148,8 +310,16 @@ public class User_Screen extends JFrame{
 			menu_panels[4].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[4].setCount(Menus[4].getCount() + 1);
+					System.out.println(Menus[4].getCount());
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 4;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[4].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[4].getPrice();
+					menu_num_list[menu_state] = 4;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[4].menu_btns[0].setEnabled(false);
 				}
@@ -158,11 +328,19 @@ public class User_Screen extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					Menus[5].setCount(Menus[5].getCount() + 1);
 					menu_state++;
+					basket_panel.basket_menus[menu_state].index = 5;
+					basket_panel.basket_menus[menu_state].counts.setText(Menus[5].getCount() +"");
+					basket_panel.basket_menus[menu_state].setPrice();
+					basket_panel.basket_menus[menu_state].setMenuName();
 					total++;
+					total_money += Menus[5].getPrice();
+					menu_num_list[menu_state] = 5;
+//					System.out.println(menu_num_list[menu_state]);
 					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[5].menu_btns[0].setEnabled(false);
 				}
 			});
+			
 		}
 	}
 	public class Menu_panel extends JPanel {
@@ -287,6 +465,16 @@ public class User_Screen extends JFrame{
 		init_btn.setBorderPainted(false);
 		init_btn.setFocusPainted(false);	
 		init_btn.setBackground(Color.magenta);
+		init_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i < 6; i++) {
+					menu_state = -1;
+					Menus[i].setCount(0);
+					basket_panel.basket_menus[i].setVisible(false);
+					menus_panel.menu_panels[i].menu_btns[0].setEnabled(true);
+				}
+			}
+		});
 		
 		pay_btn = new JButton("결제");
 		control_panel.add(pay_btn);

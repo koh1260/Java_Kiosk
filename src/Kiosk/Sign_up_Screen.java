@@ -1,12 +1,13 @@
 package Kiosk;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -36,6 +37,12 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 	private JTextField Phone_N_tf;
 	private JButton Ok;
 	
+	class JFrameWindowClosingEventHandler extends WindowAdapter {
+		public void windowClosing(WindowEvent e) {
+			JFrame frame = (JFrame)e.getWindow();
+			frame.dispose();
+		}
+	}
 	
 	public Sign_up_Screen() {
 		init();
@@ -74,7 +81,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 		setVisible(true);
 		setSize(400, 550);
 		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new JFrameWindowClosingEventHandler());
 		setResizable(false);
 		setLocationRelativeTo(null);
 	}
