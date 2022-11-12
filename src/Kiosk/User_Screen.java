@@ -30,13 +30,15 @@ public class User_Screen extends JFrame{
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
-	Menu[] Menus = new Menu[6];
+	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
 	private JPanel logo;
 	private JPanel menu_panel;
 	private JPanel basket;
 	private JPanel control_panel;
+	private Menus_panel menus_panel;
+	private basket_panel basket_panel;
 	
 	private JLabel total;
 	private JLabel timer;
@@ -47,36 +49,12 @@ public class User_Screen extends JFrame{
 	
 	//--------------------------------생성자----------------------------------
 	public User_Screen(){
-//		SqlQuery();
 		setDisplay();
+//		SqlQuery();
 		setPanel();
 		setControlPanel();
 		menuBtn();
 	}
-	
-	
-	 private static class RoundedBorder implements Border {
-	        
-	        private int radius;
-	        
-	        RoundedBorder(int radius) {
-	            this.radius = radius;
-	        }
-	        @Override
-	        public Insets getBorderInsets(Component c) {
-	            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-	        }
-
-	        @Override
-	        public boolean isBorderOpaque() {
-	            return true;
-	        }
-
-	        @Override
-	        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-	            g.drawRoundRect(x,y,width-1,height-1,radius,radius);
-	        }
-	    }
 	
 	//--------------------------------장바구니---------------------------------
 	public class basket_panel extends JPanel{
@@ -131,10 +109,10 @@ public class User_Screen extends JFrame{
 		}
 	}
 	public class Menu_panel extends JPanel {
-		JButton[] menu_btns = new JButton[2];
-		JLabel menu_icon;
+		private JButton[] menu_btns = new JButton[2];
+		private JLabel menu_icon;
 		JLabel menu_name;
-		ImageIcon img = new ImageIcon("images/meal.jpeg");
+		private ImageIcon img = new ImageIcon("images/meal.jpeg");
 		
 		public Menu_panel() {
 			setLayout(null);			
@@ -145,15 +123,19 @@ public class User_Screen extends JFrame{
 			menu_icon.setBounds(0,0,186,150);
 			menu_icon.setBackground(Color.YELLOW);
 			
-			add(menu_name);
+//			add(menu_name);
+//			menu_name.setBounds(10,10,30,30);
 			
 			
 			add(menu_btns[0] = new JButton("선택"));
 			menu_btns[0].setBounds(0, 169, 94, 35);
 			add(menu_btns[1] = new JButton("영양 성분"));
 			menu_btns[1].setBounds(92, 169, 94, 35);
-
 		}
+		public void setMenu_name(String menu_name) {
+			this.menu_name.setText(menu_name);
+		}
+
 	}
 
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
@@ -166,16 +148,18 @@ public class User_Screen extends JFrame{
 				ps.setInt(1, (i+1));
 				rs = ps.executeQuery();
 			
+				System.out.println("연결 성공.");
+				
 				if(rs.next()) {
 					Menus[i].setName(rs.getString("menu_num"));
 					Menus[i].setPrice(rs.getInt("menu_price"));
 					Menus[i].setCarbo(rs.getInt("menu_carbo"));
-					Menus[i].setProtein(rs.getInt("menu_proetin"));
+					Menus[i].setProtein(rs.getInt("menu_protein"));
 					Menus[i].setFat(rs.getInt("menu_fat"));
 					Menus[i].setKcal(rs.getInt("menu_kcal"));
 				}
 			}
-			System.out.println("연결 성공.");
+			
 			
 			
 		}catch(SQLException e1) {
@@ -191,14 +175,12 @@ public class User_Screen extends JFrame{
 		logo.setBounds(0,0,700,40);
 		logo.setBackground(Color.LIGHT_GRAY);
 		
-		Menus_panel menus_panel = new Menus_panel();
+		menus_panel = new Menus_panel();
 		add(menus_panel);
 		menus_panel.setBounds(1,40, 700, 459);
-//		menu_panel.setBackground(Color.LIGHT_GRAY);
 		
 		
-		basket_panel basket_panel = new basket_panel();
-//		basket = new JPanel();
+		basket_panel = new basket_panel();
 		add(basket_panel);
 		basket_panel.setBounds(0,500, 500, 375 );
 		
@@ -208,6 +190,12 @@ public class User_Screen extends JFrame{
 		control_panel.setLayout(null);
 		control_panel.setBackground(Color.gray);
 	}
+	public void menusPanelSet() {
+		for(int i = 0 ; i < 6; i ++) {
+			menus_panel.menu_panels[i].setMenu_name(Menus[i].getName());
+		}
+	}
+	
 	public void menuBtn() {
 		menus = new JButton[6];
 		
