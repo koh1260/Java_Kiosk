@@ -1,10 +1,9 @@
 package Kiosk;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,9 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 
 public class User_Screen extends JFrame{
@@ -29,7 +26,7 @@ public class User_Screen extends JFrame{
 	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
-	
+
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
@@ -40,7 +37,10 @@ public class User_Screen extends JFrame{
 	private Menus_panel menus_panel;
 	private basket_panel basket_panel;
 	
-	private JLabel total;
+	private int menu_state = -1;
+	private int total = 0;
+	private JLabel total_count;
+	private int total_money = 0;
 	private JLabel timer;
 	private JButton init_btn;
 	private JButton pay_btn;
@@ -48,17 +48,20 @@ public class User_Screen extends JFrame{
 	private JButton[] menus;
 	
 	//--------------------------------생성자----------------------------------
-	public User_Screen(){
+	public User_Screen() {
 		setDisplay();
-//		SqlQuery();
+		SqlQuery();
 		setPanel();
 		setControlPanel();
+		System.out.println(menu_state);
 		menuBtn();
+		System.out.println(menu_state);
+		timer();
 	}
 	
 	//--------------------------------장바구니---------------------------------
 	public class basket_panel extends JPanel{
-		private basket_menu[] basket_menus = new basket_menu[7];
+		basket_menu[] basket_menus = new basket_menu[7];
 		
 		public basket_panel() {
 			setLayout(new GridLayout(7,1));
@@ -106,10 +109,64 @@ public class User_Screen extends JFrame{
 				menu_panels[i] = new Menu_panel();
 				add(menu_panels[i]);
 			}
+			menu_panels[0].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[0].setCount(Menus[0].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[0].menu_btns[0].setEnabled(false);
+				}
+			});
+			menu_panels[1].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[1].setCount(Menus[1].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[1].menu_btns[0].setEnabled(false);
+				}
+			});
+			menu_panels[2].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[2].setCount(Menus[2].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[2].menu_btns[0].setEnabled(false);
+				}
+			});
+			menu_panels[3].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[3].setCount(Menus[3].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[3].menu_btns[0].setEnabled(false);
+				}
+			});
+			menu_panels[4].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[4].setCount(Menus[4].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[4].menu_btns[0].setEnabled(false);
+				}
+			});
+			menu_panels[5].menu_btns[0].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Menus[5].setCount(Menus[5].getCount() + 1);
+					menu_state++;
+					total++;
+					basket_panel.basket_menus[menu_state].setVisible(true);
+					menu_panels[5].menu_btns[0].setEnabled(false);
+				}
+			});
 		}
 	}
 	public class Menu_panel extends JPanel {
-		private JButton[] menu_btns = new JButton[2];
+		JButton[] menu_btns = new JButton[2];
 		private JLabel menu_icon;
 		JLabel menu_name;
 		private ImageIcon img = new ImageIcon("images/meal.jpeg");
@@ -142,16 +199,18 @@ public class User_Screen extends JFrame{
 	public void SqlQuery() {
 		try {
 			con = DriverManager.getConnection(db_url, db_user, db_pw);
+			ps = con.prepareStatement("select * from menu where menu_num=?");
 			
 			for(int i = 0 ; i < 6; i++) {
-				ps = con.prepareStatement("select * from menu where menu_num=?");
+
 				ps.setInt(1, (i+1));
 				rs = ps.executeQuery();
 			
 				System.out.println("연결 성공.");
 				
 				if(rs.next()) {
-					Menus[i].setName(rs.getString("menu_num"));
+					Menus[i] = new Menu();
+					Menus[i].setName(rs.getString("menu_name"));
 					Menus[i].setPrice(rs.getInt("menu_price"));
 					Menus[i].setCarbo(rs.getInt("menu_carbo"));
 					Menus[i].setProtein(rs.getInt("menu_protein"));
@@ -159,9 +218,6 @@ public class User_Screen extends JFrame{
 					Menus[i].setKcal(rs.getInt("menu_kcal"));
 				}
 			}
-			
-			
-			
 		}catch(SQLException e1) {
 //			System.out.println("연결 실패.");
 			e1.printStackTrace();
@@ -204,8 +260,8 @@ public class User_Screen extends JFrame{
 			menus[i].setSize(30,30);
 			menus[i].setBorderPainted(false);
 			menus[i].setFocusPainted(false);
-			menu_panel.add(menus[i]);
-		}
+			add(menus[i]);
+		}     
 	}
 	
 	public void setControlPanel() {
@@ -216,13 +272,13 @@ public class User_Screen extends JFrame{
 		timer.setBackground(Color.WHITE);
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		
-		total = new JLabel("총량  " + Integer.toString(num));
-		control_panel.add(total);
-		total.setOpaque(true);
-		total.setBounds(0,75,200, 75);
-		total.setBackground(Color.WHITE);
-		total.setHorizontalAlignment(JLabel.CENTER);	
-		total.setBackground(Color.yellow);
+		total_count = new JLabel("총량  " + Integer.toString(num));
+		control_panel.add(total_count);
+		total_count.setOpaque(true);
+		total_count.setBounds(0,75,200, 75);
+		total_count.setBackground(Color.WHITE);
+		total_count.setHorizontalAlignment(JLabel.CENTER);	
+		total_count.setBackground(Color.yellow);
 		
 		init_btn = new JButton("초기화");
 		control_panel.add(init_btn);
@@ -239,7 +295,8 @@ public class User_Screen extends JFrame{
 		pay_btn.setBorderPainted(false);
 		pay_btn.setFocusPainted(false);	
 		pay_btn.setBackground(Color.GREEN);
-		
+	}
+	public void timer() {
 		for(int i = 120; i >= 0; i--) {
 			timer.setText(i + "초");
 			
@@ -256,10 +313,6 @@ public class User_Screen extends JFrame{
 					this.setVisible(false);
 				}
 		}
-		
-	}
-	public void setBasket() {
-		
 	}
 
 	public void setDisplay() {		
