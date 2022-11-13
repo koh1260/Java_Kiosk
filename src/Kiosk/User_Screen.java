@@ -74,160 +74,106 @@ public class User_Screen extends JFrame{
 			
 			for(int i = 0 ; i < 6; i++) {
 				 basket_menus[i] = new basket_menu();
-				 add(basket_menus[i]);
-				 basket_menus[i].setVisible(false);
+//				 add(basket_menus[i]);
+//				 basket_menus[i].setVisible(false);
 			}
 			total_panel = new JPanel();
 			total_panel.setLayout(new FlowLayout());
-			total_m = new JLabel("안");
+			total_m = new JLabel("0원");
 			total_panel.add(total_m);
-			total_panel.setBackground(Color.CYAN);
+			total_panel.setBackground(Color.DARK_GRAY);
 			add(total_panel);
 			
 			
 			basket_menus[0].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[0].index = menu_num_list[0];
-					Menus[menu_num_list[0]].setCount(Menus[menu_num_list[0]].getCount()+1);
-					basket_menus[0].setCounts();
-					basket_menus[0].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[0]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[0].Plus();
 				}
 			});
 			basket_menus[1].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[1].index = menu_num_list[1];
-					Menus[menu_num_list[1]].setCount(Menus[menu_num_list[1]].getCount()+1);
-					basket_menus[1].setCounts();
-					basket_menus[1].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[1]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[1].Plus();
 				}
 			});
 			basket_menus[2].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[2].index = menu_num_list[2];
-					Menus[menu_num_list[2]].setCount(Menus[menu_num_list[2]].getCount()+1);
-					basket_menus[2].setCounts();
-					basket_menus[2].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[2]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[2].Plus();
 				}
 			});
 			basket_menus[3].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[3].index = menu_num_list[3];
-					Menus[menu_num_list[3]].setCount(Menus[menu_num_list[3]].getCount()+1);
-					basket_menus[3].setCounts();
-					basket_menus[3].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[3]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[3].Plus();
 				}
 			});
 			basket_menus[4].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[4].index = menu_num_list[4];
-					Menus[menu_num_list[4]].setCount(Menus[menu_num_list[4]].getCount()+1);
-					basket_menus[4].setCounts();
-					basket_menus[4].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[4]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[4].Plus();
 				}
 			});
 			basket_menus[5].plus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[5].index = menu_num_list[5];
-					Menus[menu_num_list[5]].setCount(Menus[menu_num_list[5]].getCount()+1);
-					basket_menus[5].setCounts();
-					basket_menus[5].setPrice();
-					total++;
-					total_money += Menus[menu_num_list[5]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
+					basket_menus[5].Plus();
 				}
 			});
 			
 			basket_menus[0].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[0].index = menu_num_list[0];
 					basket_menus[0].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[0]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[0].getCount() == 0) {
 						basket_menus[0].setVisible(false);
+						remove(basket_menus[0]);
+						menus_panel.menu_panels[0].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 			basket_menus[1].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[1].index = menu_num_list[1];
 					basket_menus[1].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[1]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[1].getCount() == 0) {
 						basket_menus[1].setVisible(false);
+						remove(basket_menus[1]);
+						menus_panel.menu_panels[1].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 			basket_menus[2].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[2].index = menu_num_list[2];
 					basket_menus[2].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[2]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[2].getCount() == 0) {
 						basket_menus[2].setVisible(false);
+						remove(basket_menus[2]);
+						menus_panel.menu_panels[2].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 			basket_menus[3].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[3].index = menu_num_list[3];
 					basket_menus[3].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[3]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[3].getCount() == 0) {
 						basket_menus[3].setVisible(false);
+						remove(basket_menus[3]);
+						menus_panel.menu_panels[3].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 			basket_menus[4].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[4].index = menu_num_list[4];
 					basket_menus[4].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[4]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[4].getCount() == 0) {
 						basket_menus[4].setVisible(false);
+						remove(basket_menus[4]);
+						menus_panel.menu_panels[4].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 			basket_menus[5].minus.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					basket_menus[5].index = menu_num_list[5];
 					basket_menus[5].Minus();
-					total--;
-					total_money -= Menus[menu_num_list[5]].getPrice();
-					basket_panel.total_m.setText(total_money +"");
-					total_count.setText("총량: " + total);
-					if(Menus[0].getCount() == 0)
+					if(Menus[5].getCount() == 0) {
 						basket_menus[5].setVisible(false);
+						remove(basket_menus[5]);
+						menus_panel.menu_panels[5].menu_btns[0].setEnabled(true);
+					}
 				}
 			});
 
@@ -235,10 +181,12 @@ public class User_Screen extends JFrame{
 	}
 	public class basket_col extends JPanel{
 		JLabel menu_name;
+
 	}
 	public class basket_menu extends JPanel{ //width: 500 height: 400
 		int index;
 		int count = 0;
+		Menu menu = new Menu();
 		JButton plus = new JButton("+");
 		JButton minus = new JButton("-"); 
 		JLabel counts = new JLabel();
@@ -252,8 +200,9 @@ public class User_Screen extends JFrame{
 			
 			add(counts);
 			add(minus);
+			
 			add(price);
-			setBackground(Color.LIGHT_GRAY);
+			setBackground(Color.GRAY);
 		}
 		public void setCounts() {
 			counts.setText(Menus[index].getCount()+"");
@@ -264,10 +213,23 @@ public class User_Screen extends JFrame{
 		public void setMenuName() {
 			menu_name.setText(Menus[index].getName());
 		}
+		public void Plus() {
+			Menus[index].setCount(Menus[index].getCount()+1);
+			total++;
+			total_money += Menus[index].getPrice();
+			basket_panel.total_m.setText(total_money +"원");
+			total_count.setText("총량: " + total);
+			setCounts();
+			setPrice();
+		}
 		public void Minus() {
 			Menus[index].setCount(Menus[index].getCount() - 1);
-			setPrice();
+			total--;
+			total_money -= Menus[index].getPrice();
+			basket_panel.total_m.setText(total_money +"원");
+			total_count.setText("총량: " + total);
 			setCounts();
+			setPrice();
 		}
 	}
 	
@@ -289,17 +251,19 @@ public class User_Screen extends JFrame{
 					Menus[0].setCount(Menus[0].getCount() + 1);
 					System.out.println(Menus[0].getCount());
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 0;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[0].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[0]);
+					basket_panel.basket_menus[0].setVisible(true);
+					basket_panel.basket_menus[0].index = 0;
+					basket_panel.basket_menus[0].counts.setText(Menus[0].getCount() +"");
+					basket_panel.basket_menus[0].setPrice();
+					basket_panel.basket_menus[0].setMenuName();
 					total++;
 					total_money += Menus[0].getPrice();
 					menu_num_list[menu_state] = 0;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[0].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -308,17 +272,19 @@ public class User_Screen extends JFrame{
 					Menus[1].setCount(Menus[1].getCount() + 1);
 					System.out.println(Menus[1].getCount());
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 1;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[1].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[1]);
+					basket_panel.basket_menus[1].setVisible(true);
+					basket_panel.basket_menus[1].index = 1;
+					basket_panel.basket_menus[1].counts.setText(Menus[1].getCount() +"");
+					basket_panel.basket_menus[1].setPrice();
+					basket_panel.basket_menus[1].setMenuName();
 					total++;
 					total_money += Menus[1].getPrice();
 					menu_num_list[menu_state] = 1;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[1].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -327,17 +293,19 @@ public class User_Screen extends JFrame{
 					Menus[2].setCount(Menus[2].getCount() + 1);
 					System.out.println(Menus[2].getCount());
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 2;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[2].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[2]);
+					basket_panel.basket_menus[2].setVisible(true);
+					basket_panel.basket_menus[2].index = 2;
+					basket_panel.basket_menus[2].counts.setText(Menus[2].getCount() +"");
+					basket_panel.basket_menus[2].setPrice();
+					basket_panel.basket_menus[2].setMenuName();
 					total++;
 					total_money += Menus[2].getPrice();
 					menu_num_list[menu_state] = 2;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[2].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -346,17 +314,19 @@ public class User_Screen extends JFrame{
 					Menus[3].setCount(Menus[3].getCount() + 1);
 					System.out.println(Menus[3].getCount());
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 3;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[3].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[3]);
+					basket_panel.basket_menus[3].setVisible(true);
+					basket_panel.basket_menus[3].index = 3;
+					basket_panel.basket_menus[3].counts.setText(Menus[3].getCount() +"");
+					basket_panel.basket_menus[3].setPrice();
+					basket_panel.basket_menus[3].setMenuName();
 					total++;
 					total_money += Menus[3].getPrice();
 					menu_num_list[menu_state] = 3;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[3].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -365,17 +335,19 @@ public class User_Screen extends JFrame{
 					Menus[4].setCount(Menus[4].getCount() + 1);
 					System.out.println(Menus[4].getCount());
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 4;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[4].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[4]);
+					basket_panel.basket_menus[4].setVisible(true);
+					basket_panel.basket_menus[4].index = 4;
+					basket_panel.basket_menus[4].counts.setText(Menus[4].getCount() +"");
+					basket_panel.basket_menus[4].setPrice();
+					basket_panel.basket_menus[4].setMenuName();
 					total++;
 					total_money += Menus[4].getPrice();
 					menu_num_list[menu_state] = 4;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[4].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -383,17 +355,19 @@ public class User_Screen extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					Menus[5].setCount(Menus[5].getCount() + 1);
 					menu_state++;
-					basket_panel.basket_menus[menu_state].index = 5;
-					basket_panel.basket_menus[menu_state].counts.setText(Menus[5].getCount() +"");
-					basket_panel.basket_menus[menu_state].setPrice();
-					basket_panel.basket_menus[menu_state].setMenuName();
+					basket_panel.add(basket_panel.basket_menus[5]);
+					basket_panel.basket_menus[5].setVisible(true);
+					basket_panel.basket_menus[5].index = 5;
+					basket_panel.basket_menus[5].counts.setText(Menus[5].getCount() +"");
+					basket_panel.basket_menus[5].setPrice();
+					basket_panel.basket_menus[5].setMenuName();
 					total++;
 					total_money += Menus[5].getPrice();
 					menu_num_list[menu_state] = 5;
 //					System.out.println(menu_num_list[menu_state]);
-					basket_panel.basket_menus[menu_state].setVisible(true);
+//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[5].menu_btns[0].setEnabled(false);
-					basket_panel.total_m.setText(total_money +"");
+					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("총량: " + total);
 				}
 			});
@@ -402,27 +376,27 @@ public class User_Screen extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					Nutrition_Screen n = new Nutrition_Screen();
 					n.receive_Nu(Menus[0].getCarbo(), Menus[0].getProtein(), Menus[0].getFat(), Menus[0].getKcal());
-					n.setVisible(true);
+//					n.setVisible(true);
 				}
 			});
 			menu_panels[1].menu_btns[1].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Nutrition_Screen n = new Nutrition_Screen();
 					n.receive_Nu(Menus[1].getCarbo(), Menus[1].getProtein(), Menus[1].getFat(), Menus[1].getKcal());
-					n.setVisible(true);
+//					n.setVisible(true);
 				}
 			});
 			menu_panels[2].menu_btns[1].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Nutrition_Screen n = new Nutrition_Screen();
 					n.receive_Nu(Menus[2].getCarbo(), Menus[2].getProtein(), Menus[2].getFat(), Menus[2].getKcal());
-					n.setVisible(true);
+//					n.setVisible(true);
 				}
 			});menu_panels[3].menu_btns[1].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Nutrition_Screen n = new Nutrition_Screen();
 					n.receive_Nu(Menus[3].getCarbo(), Menus[3].getProtein(), Menus[3].getFat(), Menus[3].getKcal());
-					n.setVisible(true);
+//					n.setVisible(true);
 				}
 			});menu_panels[4].menu_btns[1].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -434,7 +408,7 @@ public class User_Screen extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					Nutrition_Screen n = new Nutrition_Screen();
 					n.receive_Nu(Menus[5].getCarbo(), Menus[5].getProtein(), Menus[5].getFat(), Menus[5].getKcal());
-					n.setVisible(true);
+//					n.setVisible(true);
 				}
 			});
 			
@@ -568,9 +542,12 @@ public class User_Screen extends JFrame{
 					menu_state = -1;
 					Menus[i].setCount(0);
 					basket_panel.basket_menus[i].setVisible(false);
+					basket_panel.remove(basket_panel.basket_menus[i]);
 					menus_panel.menu_panels[i].menu_btns[0].setEnabled(true);
 					total_money = 0;
-					basket_panel.total_m.setText(total_money +"");
+					total = 0;
+					total_count.setText("총량  " + total);
+					basket_panel.total_m.setText(total_money +"원");
 				}
 			}
 		});
