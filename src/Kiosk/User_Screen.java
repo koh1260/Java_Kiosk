@@ -454,8 +454,6 @@ public class User_Screen extends JFrame{
 
 				ps.setInt(1, (i+1));
 				rs = ps.executeQuery();
-			
-				System.out.println("연결 성공.");
 				
 				if(rs.next()) {
 					Menus[i] = new Menu();
@@ -467,6 +465,7 @@ public class User_Screen extends JFrame{
 					Menus[i].setKcal(rs.getInt("menu_kcal"));
 				}
 			}
+			System.out.println("연결 성공.");
 		}catch(SQLException e1) {
 //			System.out.println("연결 실패.");
 			e1.printStackTrace();
@@ -484,10 +483,9 @@ public class User_Screen extends JFrame{
 		add(menus_panel);
 		menus_panel.setBounds(1,40, 700, 459);
 		
-		
 		basket_panel = new basket_panel();
 		add(basket_panel);
-		basket_panel.setBounds(0,500, 500, 375 );
+		basket_panel.setBounds(0,500, 500, 355 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
