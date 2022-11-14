@@ -66,7 +66,7 @@ public class User_Screen extends JFrame{
 	//--------------------------------Timer---------------------------------
 	class setTimer implements ActionListener
     {
-    	int n=10;
+    	int n=120;
     	
     	public void actionPerformed(ActionEvent e) {
     		n--;
