@@ -107,16 +107,14 @@ public class Login_Screen extends JFrame implements ActionListener{
 					if(rs1.next()) {
 						if(PW.equals(rs1.getString(1))) {
 							new User_Screen();
-//							User_Screen u = new User_Screen();
-							setVisible(false);
+							dispose();
 						}else {
 							JOptionPane.showMessageDialog(this, "비밀번호가 틀렸습니다.");
 						}
 					}else if(rs2.next()) {
 						if(PW.equals(rs2.getString(1))){
-							Admin_Screen a = new Admin_Screen();
-							a.setVisible(true);
-							setVisible(false);	
+							new Admin_Screen();
+							dispose();
 						}else {
 							JOptionPane.showMessageDialog(this, "비밀번호가 틀렸습니다.");
 						}
@@ -133,8 +131,7 @@ public class Login_Screen extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource() == Sign_upB) {
-			Sign_up_Screen s = new Sign_up_Screen();
-			s.setVisible(true);
+			new Sign_up_Screen();
 		}
 	}
 	 

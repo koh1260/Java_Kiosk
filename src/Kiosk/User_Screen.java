@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 
 public class User_Screen extends JFrame{
@@ -55,11 +56,34 @@ public class User_Screen extends JFrame{
 		SqlQuery();
 		setPanel();
 		setControlPanel();
-		System.out.println("Control");
 		menuBtn();
-		System.out.println("menubtn");
+		
+		ActionListener listener = new setTimer();
+	    Timer t = new Timer(1000, listener);
+	    t.start();
 //		timer();
 	}
+	//--------------------------------Timer---------------------------------
+	class setTimer implements ActionListener
+    {
+    	int n=10;
+    	
+    	public void actionPerformed(ActionEvent e) {
+    		n--;
+    		if(n == 0) {
+    			try {
+    				Thread.sleep(1000);
+    			}catch(InterruptedException e1) {
+    				
+    			}
+    			new Login_Screen();
+    			dispose();
+    		}
+    		timer.setText(n+"");
+    	}
+    }
+	//--------------------------------Timer---------------------------------
+    
 	
 	//--------------------------------장바구니---------------------------------
 	public class basket_panel extends JPanel{
@@ -513,25 +537,25 @@ public class User_Screen extends JFrame{
 	}
 	
 	public void setControlPanel() {
-		timer = new JLabel("Timer");		
+		timer = new JLabel("120");		
 		control_panel.add(timer);
 		timer.setOpaque(true);
-		timer.setBounds(0,0,200, 75);
+		timer.setBounds(0,0,185, 75);
 		timer.setBackground(Color.WHITE);
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		
 		total_count = new JLabel("총량  " + total);
 		control_panel.add(total_count);
 		total_count.setOpaque(true);
-		total_count.setBounds(0,75,200, 75);
+		total_count.setBounds(0,75,185, 75);
 		total_count.setBackground(Color.WHITE);
 		total_count.setHorizontalAlignment(JLabel.CENTER);	
 		total_count.setBackground(Color.yellow);
 		
-		init_btn = new JButton("초기화");
+		init_btn = new JButton(new ImageIcon("images/init_btn.png"));
 		control_panel.add(init_btn);
 		init_btn.setOpaque(true);
-		init_btn.setBounds(0,150,200, 75);
+		init_btn.setBounds(0,150,185, 75);
 		init_btn.setBorderPainted(false);
 		init_btn.setFocusPainted(false);	
 		init_btn.setBackground(Color.magenta);
@@ -554,11 +578,19 @@ public class User_Screen extends JFrame{
 		pay_btn = new JButton("결제");
 		control_panel.add(pay_btn);
 		pay_btn.setOpaque(true);
-		pay_btn.setBounds(0,226,200, 150);
+		pay_btn.setBounds(0,226,185, 150);
 		pay_btn.setBorderPainted(false);
 		pay_btn.setFocusPainted(false);	
 		pay_btn.setBackground(Color.GREEN);
+		pay_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Pay_Screen();
+			}
+		});
 	}
+	
+	  
+	
 	public void timer() {
 		for(int i = 120; i >= 0; i--) {
 			timer.setText(i + "초");

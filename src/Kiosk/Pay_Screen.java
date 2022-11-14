@@ -34,7 +34,7 @@ public class Pay_Screen extends JFrame {
       pay_north.add(title_label);
       
       // 배경 윗부분 - 아이콘(동의대학교 로고)
-      ImageIcon logo_icon = new ImageIcon("images/mark.png");
+      ImageIcon logo_icon = new ImageIcon("images/logo.png");
       JLabel logo_label = new JLabel(logo_icon);
       logo_label.setBounds(540, 10, 130, 130);
       logo_label.setForeground(Color.white);
@@ -60,6 +60,12 @@ public class Pay_Screen extends JFrame {
       card_btn.setBorder(BorderFactory.createLineBorder(Color.white));
       card_btn.setBounds(32, 235, 622, 275);
       card_btn.setBackground(Color.white);
+      card_btn.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		  new creditcard();
+    		  setVisible(false);
+    	  }
+      });
       pay_background.add(card_btn);
       
       // 카드 결제 버튼 - 아이콘(카드 결제)
@@ -90,6 +96,12 @@ public class Pay_Screen extends JFrame {
       cash_btn.setBorder(BorderFactory.createLineBorder(Color.white));
       cash_btn.setBounds(32, 555, 622, 275);
       cash_btn.setBackground(Color.white);
+      cash_btn.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		  new MoneyFrame();
+    		  setVisible(false);
+    	  }
+      });
       pay_background.add(cash_btn);
       
       // 현금 결제 버튼 - 아이콘(현금 결제)

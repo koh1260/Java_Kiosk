@@ -45,9 +45,8 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b) {
-			Login_Screen l = new Login_Screen();
-			setVisible(false);
-			l.setVisible(true);
+			new Login_Screen();
+			dispose();
 		}
 	}
 }
