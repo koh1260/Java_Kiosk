@@ -23,7 +23,7 @@ public class User_Screen extends JFrame{
 	private static PreparedStatement ps;
 	private static ResultSet rs;
 	
-	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
+	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 
@@ -37,7 +37,6 @@ public class User_Screen extends JFrame{
 	private Menus_panel menus_panel;
 	private basket_panel basket_panel;
 	
-	public static int j;
 	private int[] menu_num_list = new int[6];
 	private int menu_num;
 	private int menu_state = -1;
@@ -181,7 +180,6 @@ public class User_Screen extends JFrame{
 	}
 	public class basket_col extends JPanel{
 		JLabel menu_name;
-
 	}
 	public class basket_menu extends JPanel{ //width: 500 height: 400
 		int index;
@@ -239,7 +237,7 @@ public class User_Screen extends JFrame{
 		
 		public Menus_panel() {
 			setLayout(new GridLayout(2,3, 55, 25));
-			setBorder(BorderFactory.createEmptyBorder(10,15,20,15));
+			setBorder(BorderFactory.createEmptyBorder(10,15,20,35));
 //			setBackground(Color.CYAN);
 			for(int i = 0;i < 6; i++) {
 				menu_panels[i] = new Menu_panel();
@@ -447,6 +445,7 @@ public class User_Screen extends JFrame{
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
 	public void SqlQuery() {
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(db_url, db_user, db_pw);
 			ps = con.prepareStatement("select * from menu where menu_num=?");
 			
@@ -466,6 +465,8 @@ public class User_Screen extends JFrame{
 				}
 			}
 			System.out.println("연결 성공.");
+		}catch(ClassNotFoundException e1) {
+			e1.printStackTrace();
 		}catch(SQLException e1) {
 //			System.out.println("연결 실패.");
 			e1.printStackTrace();

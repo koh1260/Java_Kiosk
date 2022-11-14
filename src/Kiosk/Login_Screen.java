@@ -21,7 +21,7 @@ public class Login_Screen extends JFrame implements ActionListener{
 	private static PreparedStatement ps2;
 	private static ResultSet rs2;
 	
-	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
+	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
@@ -92,6 +92,7 @@ public class Login_Screen extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요.");
 			}else {
 				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					con = DriverManager.getConnection(db_url, db_user, db_pw);
 					ps1 = con.prepareStatement("select PW from userAccount where ID=?");
 					ps1.setString(1, userID.trim());
@@ -122,7 +123,8 @@ public class Login_Screen extends JFrame implements ActionListener{
 					}else {
 						JOptionPane.showMessageDialog(this, "존재하지 않는 학번입니다.");
 					}
-					
+				}catch(ClassNotFoundException e1) {
+					e1.printStackTrace();
 				}catch(SQLException e1) {
 //					System.out.println("연결 실패.");
 					e1.printStackTrace();

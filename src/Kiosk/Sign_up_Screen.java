@@ -23,7 +23,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 	private static PreparedStatement ps2;
 	private static ResultSet rs2;
 	
-	private static String db_url = "jdbc:mysql://localhost:3306/Mydatabase";
+	private static String db_url = "jdbc:mysql://113.198..233.244:13306/java_kiosk/my_db?useSSL=false";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
@@ -120,10 +120,9 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(this, "정보를 모두 입력하세요.");
 			}else {
 				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					con = DriverManager.getConnection(db_url, db_user, db_pw);
-					System.out.println("연결 성공.");
+					System.out.println("conect.");
 					ps1 = con.prepareStatement("select * from userAccount where ID=?");
 					ps1.setString(1, ID.trim());
 					rs1 = ps1.executeQuery();

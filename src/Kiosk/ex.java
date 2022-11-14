@@ -1,6 +1,6 @@
 package Kiosk;
 public class ex {
 	public static void main(String[] args) {
-		new User_Screen();
+		new Initial_Screen();
 	}
 }
