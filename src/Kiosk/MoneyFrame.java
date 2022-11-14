@@ -25,6 +25,7 @@ public class MoneyFrame extends JFrame {
 	   setVisible(true);
 	   setSize(670,600);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         setLocationRelativeTo(null);
          Container c = getContentPane();
          c.setLayout(new BorderLayout());
          
@@ -79,7 +80,8 @@ public class MoneyFrame extends JFrame {
          			}catch(InterruptedException e1) {
          				
          			}
-         			setVisible(false);
+         			new Initial_Screen();
+         			dispose();
          			return;
          		}
          		lbl2.setText(text[n]);

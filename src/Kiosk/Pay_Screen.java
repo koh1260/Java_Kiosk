@@ -7,8 +7,13 @@ import javax.swing.*;
 public class Pay_Screen extends JFrame {
    public Pay_Screen() {
       // 기본 설정
+	   setVisible(true);
+	   setSize(700, 900);
+	   setLayout(null);
+	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   setResizable(false);
       setTitle("결제 수단 선택");
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setLocationRelativeTo(null);
       Container c = getContentPane();
       c.setLayout(null);
       
@@ -63,7 +68,6 @@ public class Pay_Screen extends JFrame {
       card_btn.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
     		  new creditcard();
-    		  setVisible(false);
     	  }
       });
       pay_background.add(card_btn);
@@ -99,7 +103,6 @@ public class Pay_Screen extends JFrame {
       cash_btn.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
     		  new MoneyFrame();
-    		  setVisible(false);
     	  }
       });
       pay_background.add(cash_btn);

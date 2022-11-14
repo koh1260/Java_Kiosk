@@ -16,9 +16,11 @@ public class creditcard extends JFrame {
       private JLabel lbl1, lbl2, lbl3, lbl4;
       
    public creditcard() {
+	   setResizable(false);
       setTitle("카드 결제 창");
       setVisible(true);
       setSize(670,600);
+	   setLocationRelativeTo(null);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          Container c = getContentPane();
          c.setLayout(new BorderLayout());
@@ -73,8 +75,8 @@ public class creditcard extends JFrame {
           			}catch(InterruptedException e1) {
           				
           			}
-          			setVisible(false);
-          			return;
+          			new Initial_Screen();
+         			dispose();
           		}
           		lbl2.setText(text[n]);
           	}

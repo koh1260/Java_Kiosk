@@ -585,6 +585,7 @@ public class User_Screen extends JFrame{
 		pay_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Pay_Screen();
+				dispose();
 			}
 		});
 	}
