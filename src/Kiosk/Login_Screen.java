@@ -1,4 +1,7 @@
 package Kiosk;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -7,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,6 +43,7 @@ public class Login_Screen extends JFrame implements ActionListener{
 	    setLocationAndSize();
 	    addActionEvent();
 	    
+	    
 		add(userLabel);
 		add(Pw);
 		add(userTextF);
@@ -49,20 +54,31 @@ public class Login_Screen extends JFrame implements ActionListener{
 	
 	
 	private void init() {
-		userLabel = new JLabel("User Name");
-		Pw = new JLabel("Pw");
+		userLabel = new JLabel("학번");
+		userLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		Pw = new JLabel("비밀번호");
+		Pw.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		userTextF = new JTextField();
 		PwF = new JPasswordField();
-		LoginB = new JButton("Login");
-		Sign_upB = new JButton("Sign up");
+		LoginB = new JButton(new ImageIcon("images/log.png"));
+		LoginB.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		LoginB.setBorderPainted(false);
+		LoginB.setFocusPainted(false);	
+		
+		Sign_upB = new JButton(new ImageIcon("images/sign.png"));
+		Sign_upB.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		Sign_upB.setBorderPainted(false);
+		Sign_upB.setFocusPainted(false);	
 	}
 	
 	//화면 구성. 
 	public void setDisplay() {
+		Container c = getContentPane();
 	    setTitle("로그인 화면");
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);
+		c.setBackground(Color.white);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -70,12 +86,12 @@ public class Login_Screen extends JFrame implements ActionListener{
 	
 	//컨텐츠 배치, 사이즈. 
 	public void setLocationAndSize() {
-		userLabel.setBounds(120,427,100,40);
-	    Pw.setBounds(120,475,100,40);
-	    userTextF.setBounds(275,425,170,40);
-	    PwF.setBounds(275,475,170,40);
-	    LoginB.setBounds(275,525,85,30);	
-	    Sign_upB.setBounds(360,525,85,30);
+		userLabel.setBounds(150,427,100,40);
+	    Pw.setBounds(150,490,100,40);
+	    userTextF.setBounds(275,427,170,40);
+	    PwF.setBounds(275,490,170,40);
+	    LoginB.setBounds(275,550,80,32);	
+	    Sign_upB.setBounds(363,550,80,32);
 	}
 
 	//이벤트.

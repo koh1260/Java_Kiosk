@@ -1,4 +1,7 @@
 package Kiosk;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -9,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +27,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 	private static PreparedStatement ps2;
 	private static ResultSet rs2;
 	
-	private static String db_url = "jdbc:mysql://113.198..233.244:13306/java_kiosk/my_db?useSSL=false";
+	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
@@ -53,16 +57,20 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 	
 	public void init() {
 		Name = new JLabel("이름");
+		Name.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		StudentID = new JLabel("학번");
+		StudentID.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		Pw = new JLabel("비밀번호");
+		Pw.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		Phone_N = new JLabel("전화번호");
+		Phone_N.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		
 		Name_tf = new JTextField();
 		StudentID_tf = new JTextField();
 		Pw_tf = new JPasswordField();
 		Phone_N_tf = new JTextField();
 		
-		Ok = new JButton("확인");
+		Ok = new JButton(new ImageIcon("images/check.png"));
 	}
 	public void setDisplay() {
 		add(Name);
@@ -77,6 +85,9 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 		
 		add(Ok);
 		
+		Container c = getContentPane();
+		c.setBackground(Color.white);
+		
 		setTitle("회원가입");
 		setVisible(true);
 		setSize(400, 550);
@@ -87,17 +98,17 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 	}
 	
 	public void setLocationAndSize() {
-		Name.setBounds(93,120,100,40);
-		StudentID.setBounds(93,190,100,40);
-		Pw.setBounds(93,260,260,40);
-		Phone_N.setBounds(93,330,330,40);
+		Name.setBounds(85,120,100,40);
+		StudentID.setBounds(85,190,100,40);
+		Pw.setBounds(85,260,260,40);
+		Phone_N.setBounds(85,330,330,40);
 		
 		Name_tf.setBounds(143,120,120,40);
 		StudentID_tf.setBounds(143,190,120,40);
 		Pw_tf.setBounds(143,260,120,40);
 		Phone_N_tf.setBounds(143,330,120,40);
 		
-		Ok.setBounds(155,427,100,40);
+		Ok.setBounds(152,415,100,40);
 	}	
 	
 	public void addActionEvent() {
@@ -148,7 +159,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 
 					}                       
 				}catch(SQLException | ClassNotFoundException e1) {
-					System.out.println("연결 실패.");
+					System.out.println("fail.");
 	
 				}
 			}

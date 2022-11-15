@@ -19,7 +19,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	}
 	
 	private void init() {
-		b = new JButton(new ImageIcon("images/init.png"));
+		b = new JButton(new ImageIcon("images/init_screen.png"));
 	}
 	public void b_setting() {
 		b.setBounds(0,0,700, 900);
@@ -46,7 +46,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b) {
 			new Login_Screen();
-			dispose();
+			setVisible(false);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package Kiosk;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,7 +49,7 @@ public class User_Screen extends JFrame{
 	private JButton init_btn;
 	private JButton pay_btn;
 	
-	private JButton[] menus;
+//	private JButton[] menus;
 	
 	//--------------------------------생성자----------------------------------
 	public User_Screen() {
@@ -56,7 +57,7 @@ public class User_Screen extends JFrame{
 		SqlQuery();
 		setPanel();
 		setControlPanel();
-		menuBtn();
+//		menuBtn();
 		
 		ActionListener listener = new setTimer();
 	    Timer t = new Timer(1000, listener);
@@ -79,7 +80,7 @@ public class User_Screen extends JFrame{
     			new Login_Screen();
     			dispose();
     		}
-    		timer.setText(n+"");
+    		timer.setText(n+"초");
     	}
     }
 	//--------------------------------Timer---------------------------------
@@ -93,7 +94,7 @@ public class User_Screen extends JFrame{
 		
 		public basket_panel() {
 			setLayout(new GridLayout(7,1));
-			setBackground(Color.LIGHT_GRAY);
+			setBackground(Color.white);
 			
 			for(int i = 0 ; i < 6; i++) {
 				 basket_menus[i] = new basket_menu();
@@ -103,8 +104,9 @@ public class User_Screen extends JFrame{
 			total_panel = new JPanel();
 			total_panel.setLayout(new FlowLayout());
 			total_m = new JLabel("0원");
+			total_m.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			total_panel.add(total_m);
-			total_panel.setBackground(Color.DARK_GRAY);
+			total_panel.setBackground(Color.white);
 			add(total_panel);
 			
 			
@@ -209,47 +211,63 @@ public class User_Screen extends JFrame{
 		int index;
 		int count = 0;
 		Menu menu = new Menu();
-		JButton plus = new JButton("+");
-		JButton minus = new JButton("-"); 
+		JButton plus = new JButton(new ImageIcon("images/plus.png"));
+		JButton minus = new JButton(new ImageIcon("images/minus.png")); 
 		JLabel counts = new JLabel();
 		JLabel menu_name = new JLabel();
 		JLabel price = new JLabel();
 		
 		public basket_menu() { //height: 57
-			setLayout(new FlowLayout());
+			setLayout(null);
 			add(menu_name);
+			menu_name.setBounds(10,10,250,30);
+			menu_name.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 			add(plus);
+			plus.setBounds(270, 10 ,30,30);
+			plus.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			
 			add(counts);
+			counts.setBounds(320, 10, 30,30);
+			counts.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+			
 			add(minus);
+			minus.setBounds(350,10, 30,30);
 			
 			add(price);
-			setBackground(Color.GRAY);
+			price.setBounds(430,10, 80,30 );
+			price.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+			
+			setBackground(Color.white);
 		}
+		
 		public void setCounts() {
 			counts.setText(Menus[index].getCount()+"");
 		}
+		
 		public void setPrice() {
 			price.setText(Menus[index].getCount() * Menus[index].getPrice() + "원");
 		}
+		
 		public void setMenuName() {
 			menu_name.setText(Menus[index].getName());
 		}
+		
 		public void Plus() {
 			Menus[index].setCount(Menus[index].getCount()+1);
 			total++;
 			total_money += Menus[index].getPrice();
 			basket_panel.total_m.setText(total_money +"원");
-			total_count.setText("총량: " + total);
+			total_count.setText("선택 메뉴  " + total+"개");
 			setCounts();
 			setPrice();
 		}
+		
 		public void Minus() {
 			Menus[index].setCount(Menus[index].getCount() - 1);
 			total--;
 			total_money -= Menus[index].getPrice();
 			basket_panel.total_m.setText(total_money +"원");
-			total_count.setText("총량: " + total);
+			total_count.setText("선택 메뉴  " + total+"개");
 			setCounts();
 			setPrice();
 		}
@@ -258,13 +276,14 @@ public class User_Screen extends JFrame{
 	//--------------------------------메뉴 목록---------------------------------
 	public class Menus_panel extends JPanel {
 		Menu_panel [] menu_panels = new Menu_panel[6];
-		
+		String[] menu_images = {"images/don.png","images/noodle.png","images/om.png","images/gook.png","images/pasta.png","images/kimchi.png"};
 		public Menus_panel() {
 			setLayout(new GridLayout(2,3, 55, 25));
 			setBorder(BorderFactory.createEmptyBorder(10,15,20,35));
 //			setBackground(Color.CYAN);
 			for(int i = 0;i < 6; i++) {
 				menu_panels[i] = new Menu_panel();
+				menu_panels[i].menu_icon.setIcon(new ImageIcon(menu_images[i]));
 				add(menu_panels[i]);
 			}
 			
@@ -286,7 +305,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[0].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			menu_panels[1].menu_btns[0].addActionListener(new ActionListener() {
@@ -307,7 +326,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[1].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			menu_panels[2].menu_btns[0].addActionListener(new ActionListener() {
@@ -328,7 +347,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[2].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			menu_panels[3].menu_btns[0].addActionListener(new ActionListener() {
@@ -349,7 +368,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[3].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			menu_panels[4].menu_btns[0].addActionListener(new ActionListener() {
@@ -370,7 +389,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[4].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			menu_panels[5].menu_btns[0].addActionListener(new ActionListener() {
@@ -390,7 +409,7 @@ public class User_Screen extends JFrame{
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[5].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
-					total_count.setText("총량: " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 				}
 			});
 			
@@ -438,32 +457,34 @@ public class User_Screen extends JFrame{
 	}
 	public class Menu_panel extends JPanel {
 		JButton[] menu_btns = new JButton[2];
-		private JLabel menu_icon;
+		JLabel menu_icon;
 		JLabel menu_name;
 		private ImageIcon img = new ImageIcon("images/meal.jpeg");
 		
 		public Menu_panel() {
 			setLayout(null);			
-			setBackground(Color.LIGHT_GRAY);
+			setBackground(Color.white);
 			
 			add(menu_icon = new JLabel());
 			menu_icon.setOpaque(true); //true 때만 옵션 지정 가
-			menu_icon.setBounds(0,0,186,150);
-			menu_icon.setBackground(Color.YELLOW);
+			menu_icon.setBounds(0,0,186,172);
+			menu_icon.setBackground(Color.white);
 			
 //			add(menu_name);
 //			menu_name.setBounds(10,10,30,30);
 			
-			
-			add(menu_btns[0] = new JButton("선택"));
-			menu_btns[0].setBounds(0, 169, 94, 35);
-			add(menu_btns[1] = new JButton("영양 성분"));
-			menu_btns[1].setBounds(92, 169, 94, 35);
+			add(menu_btns[0] = new JButton(new ImageIcon("images/sel.png")));
+			menu_btns[0].setBounds(0, 172, 91, 30);
+			menu_btns[0].setBorderPainted(false);
+			menu_btns[0].setFocusPainted(false);	
+			add(menu_btns[1] = new JButton(new ImageIcon("images/nu.png")));
+			menu_btns[1].setBounds(89, 172, 91, 30);
+			menu_btns[1].setBorderPainted(false);
+			menu_btns[1].setFocusPainted(false);
 		}
 		public void setMenu_name(String menu_name) {
 			this.menu_name.setText(menu_name);
 		}
-
 	}
 
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
@@ -502,7 +523,7 @@ public class User_Screen extends JFrame{
 		logo = new JPanel();
 		add(logo);
 		logo.setBounds(0,0,700,40);
-		logo.setBackground(Color.LIGHT_GRAY);
+		logo.setBackground(new Color(109, 180, 242));
 		
 		menus_panel = new Menus_panel();
 		add(menus_panel);
@@ -510,13 +531,13 @@ public class User_Screen extends JFrame{
 		
 		basket_panel = new basket_panel();
 		add(basket_panel);
-		basket_panel.setBounds(0,500, 500, 355 );
+		basket_panel.setBounds(0,505, 500, 355 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
 		control_panel.setBounds(500,500, 200, 400 );
 		control_panel.setLayout(null);
-		control_panel.setBackground(Color.gray);
+		control_panel.setBackground(new Color(238, 238, 238));
 	}
 	public void menusPanelSet() {
 		for(int i = 0 ; i < 6; i ++) {
@@ -524,36 +545,38 @@ public class User_Screen extends JFrame{
 		}
 	}
 	
-	public void menuBtn() {
-		menus = new JButton[6];
-		
-		for(int i = 0; i < 6; i++) {
-			menus[i] = new JButton("menu" + Integer.toString(i+1));
-			menus[i].setSize(30,30);
-			menus[i].setBorderPainted(false);
-			menus[i].setFocusPainted(false);
-			add(menus[i]);
-		}     
-	}
+//	public void menuBtn() {
+//		menus = new JButton[6];
+//		
+//		for(int i = 0; i < 6; i++) {
+//			menus[i] = new JButton("menu" + Integer.toString(i+1));
+//			menus[i].setSize(30,30);
+//			menus[i].setBorderPainted(false);
+//			menus[i].setFocusPainted(false);
+//			add(menus[i]);
+//		}     
+//	}
 	
 	public void setControlPanel() {
-		timer = new JLabel("120");		
+		timer = new JLabel("120초");		
 		control_panel.add(timer);
+		timer.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		timer.setOpaque(true);
 		timer.setBounds(0,0,185, 75);
-		timer.setBackground(Color.WHITE);
+		timer.setBackground(new Color(238, 238, 238));
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		
-		total_count = new JLabel("총량  " + total);
+		total_count = new JLabel("선택 메뉴  " + total+"개");
 		control_panel.add(total_count);
+		total_count.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		total_count.setOpaque(true);
 		total_count.setBounds(0,75,185, 75);
-		total_count.setBackground(Color.WHITE);
+		total_count.setBackground(new Color(238, 238, 238));
 		total_count.setHorizontalAlignment(JLabel.CENTER);	
-		total_count.setBackground(Color.yellow);
 		
 		init_btn = new JButton(new ImageIcon("images/init_btn.png"));
 		control_panel.add(init_btn);
+		init_btn.setBorder(null);
 		init_btn.setOpaque(true);
 		init_btn.setBounds(0,150,185, 75);
 		init_btn.setBorderPainted(false);
@@ -569,16 +592,16 @@ public class User_Screen extends JFrame{
 					menus_panel.menu_panels[i].menu_btns[0].setEnabled(true);
 					total_money = 0;
 					total = 0;
-					total_count.setText("총량  " + total);
+					total_count.setText("선택 메뉴  " + total+"개");
 					basket_panel.total_m.setText(total_money +"원");
 				}
 			}
 		});
 		
-		pay_btn = new JButton("결제");
+		pay_btn = new JButton(new ImageIcon("images/pay_btn.png"));
 		control_panel.add(pay_btn);
 		pay_btn.setOpaque(true);
-		pay_btn.setBounds(0,226,185, 150);
+		pay_btn.setBounds(0,226,185, 135);
 		pay_btn.setBorderPainted(false);
 		pay_btn.setFocusPainted(false);	
 		pay_btn.setBackground(Color.GREEN);
@@ -589,8 +612,6 @@ public class User_Screen extends JFrame{
 			}
 		});
 	}
-	
-	  
 	
 	public void timer() {
 		for(int i = 120; i >= 0; i--) {
@@ -610,7 +631,7 @@ public class User_Screen extends JFrame{
 				}
 		}
 	}
-
+	
 	public void setDisplay() {		
 		setTitle("주문창");
 //		setUndecorated(true);
