@@ -300,7 +300,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[0].setMenuName();
 					total++;
 					total_money += Menus[0].getPrice();
-					menu_num_list[menu_state] = 0;
+//					menu_num_list[menu_state] = 0;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[0].menu_btns[0].setEnabled(false);
@@ -321,7 +321,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[1].setMenuName();
 					total++;
 					total_money += Menus[1].getPrice();
-					menu_num_list[menu_state] = 1;
+//					menu_num_list[menu_state] = 1;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[1].menu_btns[0].setEnabled(false);
@@ -342,7 +342,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[2].setMenuName();
 					total++;
 					total_money += Menus[2].getPrice();
-					menu_num_list[menu_state] = 2;
+//					menu_num_list[menu_state] = 2;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[2].menu_btns[0].setEnabled(false);
@@ -363,7 +363,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[3].setMenuName();
 					total++;
 					total_money += Menus[3].getPrice();
-					menu_num_list[menu_state] = 3;
+//					menu_num_list[menu_state] = 3;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[3].menu_btns[0].setEnabled(false);
@@ -384,7 +384,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[4].setMenuName();
 					total++;
 					total_money += Menus[4].getPrice();
-					menu_num_list[menu_state] = 4;
+//					menu_num_list[menu_state] = 4;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[4].menu_btns[0].setEnabled(false);
@@ -404,7 +404,7 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[5].setMenuName();
 					total++;
 					total_money += Menus[5].getPrice();
-					menu_num_list[menu_state] = 5;
+//					menu_num_list[menu_state] = 5;
 //					System.out.println(menu_num_list[menu_state]);
 //					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[5].menu_btns[0].setEnabled(false);
