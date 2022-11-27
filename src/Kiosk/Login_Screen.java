@@ -109,7 +109,7 @@ public class Login_Screen extends JFrame implements ActionListener{
 			}else {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					con = DriverManager.getConnection(db_url, db_user, db_pw);
+					con = DriverManager.getConnection(ex.db_url, ex.db_user, ex.db_pw);
 					ps1 = con.prepareStatement("select PW from userAccount where ID=?");
 					ps1.setString(1, userID.trim());
 					rs1 = ps1.executeQuery();

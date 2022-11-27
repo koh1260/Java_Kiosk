@@ -24,10 +24,10 @@ public class User_Screen extends JFrame{
 	private static Connection con;
 	private static PreparedStatement ps;
 	private static ResultSet rs;
-	
-	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
-	private static String db_user = "root";
-	private static String db_pw = "1306";
+//	
+//	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
+//	private static String db_user = "root";
+//	private static String db_pw = "1306";
 
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
@@ -491,7 +491,7 @@ public class User_Screen extends JFrame{
 	public void SqlQuery() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection(db_url, db_user, db_pw);
+			con = DriverManager.getConnection(ex.db_url, ex.db_user, ex.db_pw);
 			ps = con.prepareStatement("select * from menu where menu_num=?");
 			
 			for(int i = 0 ; i < 6; i++) {
@@ -607,8 +607,7 @@ public class User_Screen extends JFrame{
 		pay_btn.setBackground(Color.GREEN);
 		pay_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Pay_Screen();
-				dispose();
+				new OrderCheck_Screen(Menus);
 			}
 		});
 	}

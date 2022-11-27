@@ -12,15 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Nutrition_Screen extends JFrame{
-	private JLabel carbo = new JLabel();;
-	private JLabel protein = new JLabel();;
-	private JLabel fat = new JLabel();;
-	private JLabel kcal = new JLabel();;
+	private JLabel carbo = new JLabel();
+	private JLabel protein = new JLabel();
+	private JLabel fat = new JLabel();
+	private JLabel kcal = new JLabel();
 	
-	private JLabel carbo_t = new JLabel("탄수화물");;
-	private JLabel protein_t = new JLabel("단백질");;
+	private JLabel carbo_t = new JLabel("탄수화물");
+	private JLabel protein_t = new JLabel("단백질");
 	private JLabel fat_t = new JLabel("지방");
-	private JLabel kcal_t = new JLabel("kcal");;
+	private JLabel kcal_t = new JLabel("kcal");
 	
 	private JPanel carbo_p = new JPanel();
 	private JPanel protein_p = new JPanel();

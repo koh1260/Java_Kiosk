@@ -1,13 +1,13 @@
 package Kiosk;
 
 public class Menu {
-	private String name;
-	private int count = 0;
-	private int carbo;
-	private int protein;
-	private int fat;
-	private int kcal;
-	private int price;
+	public String name;
+	public int count = 0;
+	public int carbo;
+	public int protein;
+	public int fat;
+	public int kcal;
+	public int price;
 	
 	public Menu() {
 		
