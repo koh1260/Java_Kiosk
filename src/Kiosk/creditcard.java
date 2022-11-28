@@ -14,8 +14,10 @@ public class creditcard extends JFrame {
       private Font f3;
       private Font f4;
       private JLabel lbl1, lbl2, lbl3, lbl4;
+      Menu[] menus = new Menu[6];
       
    public creditcard() {
+	   this.menus = menus;
 	   setResizable(false);
       setTitle("카드 결제 창");
       setVisible(true);
@@ -75,7 +77,8 @@ public class creditcard extends JFrame {
           			}catch(InterruptedException e1) {
           				
           			}
-          			new Initial_Screen();
+          			ex.number++;
+          			new StanNum();
          			dispose();
           		}
           		lbl2.setText(text[n]);

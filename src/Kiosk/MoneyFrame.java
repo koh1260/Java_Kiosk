@@ -80,7 +80,8 @@ public class MoneyFrame extends JFrame {
          			}catch(InterruptedException e1) {
          				
          			}
-         			new Initial_Screen();
+         			ex.number++;
+         			new StanNum();
          			dispose();
          			return;
          		}

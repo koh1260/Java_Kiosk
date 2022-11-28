@@ -30,7 +30,7 @@ public class OrderCheck_Screen extends JFrame{
 	String date;
 	String order_list = "<html>";
 	int total_m = 0;
-	Menu[] menus = new Menu[6];
+	public static Menu[] menus = new Menu[6];
 	
 	private Connection con;
 	private PreparedStatement ps;
@@ -120,7 +120,7 @@ public class OrderCheck_Screen extends JFrame{
 						}
 					}
 				}
-				 new Pay_Screen();
+				 new Pay_Screen(menus);
 				 dispose();
 			}
 		});

@@ -625,9 +625,8 @@ public class User_Screen extends JFrame{
 				}
 				
 				if(i == 0) {
-					Login_Screen l = new Login_Screen();
-					l.setVisible(true);
-					this.setVisible(false);
+					new Login_Screen();
+					dispose();
 				}
 		}
 	}

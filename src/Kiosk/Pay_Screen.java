@@ -4,9 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+
+
 public class Pay_Screen extends JFrame {
-   public Pay_Screen() {
+	public Menu[] menus = new Menu[6];
+	
+   public Pay_Screen(Menu[] menus) {
       // 기본 설정
+	   this.menus = menus;
 	   setVisible(true);
 	   setSize(700, 900);
 	   setLayout(null);
@@ -131,9 +136,5 @@ public class Pay_Screen extends JFrame {
       
       setSize(700, 900);
       setVisible(true);
-   }
-   
-   public static void main(String[] args) {
-      new Pay_Screen();
    }
 }
