@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -74,11 +75,12 @@ public class Login_Screen extends JFrame implements ActionListener{
 	//화면 구성. 
 	public void setDisplay() {
 		Container c = getContentPane();
-	    setTitle("로그인 화면");
-		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);
+		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		c.setBackground(Color.white);
+		setUndecorated(true);
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);

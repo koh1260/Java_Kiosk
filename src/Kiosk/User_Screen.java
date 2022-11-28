@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -279,11 +280,17 @@ public class User_Screen extends JFrame{
 		String[] menu_images = {"images/don.png","images/noodle.png","images/om.png","images/gook.png","images/pasta.png","images/kimchi.png"};
 		public Menus_panel() {
 			setLayout(new GridLayout(2,3, 55, 25));
-			setBorder(BorderFactory.createEmptyBorder(10,15,20,35));
+			setBorder(BorderFactory.createEmptyBorder(10,15,20,15));
 //			setBackground(Color.CYAN);
 			for(int i = 0;i < 6; i++) {
+				//이미지 사이즈 조정 후 넣기.
+				ImageIcon icon = new ImageIcon(menu_images[i]);
+				Image img = icon.getImage();
+				Image changeImg = img.getScaledInstance(186, 150, Image.SCALE_SMOOTH);
+				ImageIcon changeIcon = new ImageIcon(changeImg);
 				menu_panels[i] = new Menu_panel();
 				menu_panels[i].menu_icon.setIcon(new ImageIcon(menu_images[i]));
+				menu_panels[i].menu_price.setText(Menus[i].price + "원");
 				add(menu_panels[i]);
 			}
 			
@@ -459,6 +466,8 @@ public class User_Screen extends JFrame{
 		JButton[] menu_btns = new JButton[2];
 		JLabel menu_icon;
 		JLabel menu_name;
+		JLabel menu_price = new JLabel("1000원", JLabel.CENTER);
+		
 		private ImageIcon img = new ImageIcon("images/meal.jpeg");
 		
 		public Menu_panel() {
@@ -467,18 +476,24 @@ public class User_Screen extends JFrame{
 			
 			add(menu_icon = new JLabel());
 			menu_icon.setOpaque(true); //true 때만 옵션 지정 가
-			menu_icon.setBounds(0,0,186,172);
+			menu_icon.setBounds(0,0,186,150);
 			menu_icon.setBackground(Color.white);
+			
+			add(menu_price);
+			menu_price.setBounds(0, 150, 186, 21);
+			menu_price.setOpaque(true);
+			menu_price.setBackground(Color.WHITE);
+			menu_price.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			
 //			add(menu_name);
 //			menu_name.setBounds(10,10,30,30);
 			
 			add(menu_btns[0] = new JButton(new ImageIcon("images/sel.png")));
-			menu_btns[0].setBounds(0, 172, 91, 30);
+			menu_btns[0].setBounds(1, 172, 91, 30);
 			menu_btns[0].setBorderPainted(false);
 			menu_btns[0].setFocusPainted(false);	
 			add(menu_btns[1] = new JButton(new ImageIcon("images/nu.png")));
-			menu_btns[1].setBounds(89, 172, 91, 30);
+			menu_btns[1].setBounds(94, 172, 91, 30);
 			menu_btns[1].setBorderPainted(false);
 			menu_btns[1].setFocusPainted(false);
 		}
@@ -532,11 +547,11 @@ public class User_Screen extends JFrame{
 		
 		basket_panel = new basket_panel();
 		add(basket_panel);
-		basket_panel.setBounds(0,505, 500, 355 );
+		basket_panel.setBounds(15,505, 500, 380 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
-		control_panel.setBounds(500,500, 200, 400 );
+		control_panel.setBounds(515,500, 200, 400 );
 		control_panel.setLayout(null);
 		control_panel.setBackground(new Color(238, 238, 238));
 	}
@@ -571,7 +586,7 @@ public class User_Screen extends JFrame{
 		control_panel.add(total_count);
 		total_count.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		total_count.setOpaque(true);
-		total_count.setBounds(0,75,185, 75);
+		total_count.setBounds(0,85,185, 75);
 		total_count.setBackground(new Color(238, 238, 238));
 		total_count.setHorizontalAlignment(JLabel.CENTER);	
 		
@@ -579,7 +594,7 @@ public class User_Screen extends JFrame{
 		control_panel.add(init_btn);
 		init_btn.setBorder(null);
 		init_btn.setOpaque(true);
-		init_btn.setBounds(0,150,185, 75);
+		init_btn.setBounds(0,175,185, 75);
 		init_btn.setBorderPainted(false);
 		init_btn.setFocusPainted(false);	
 		init_btn.setBackground(Color.magenta);
@@ -602,7 +617,7 @@ public class User_Screen extends JFrame{
 		pay_btn = new JButton(new ImageIcon("images/pay_btn.png"));
 		control_panel.add(pay_btn);
 		pay_btn.setOpaque(true);
-		pay_btn.setBounds(0,226,185, 135);
+		pay_btn.setBounds(0,255,185, 135);
 		pay_btn.setBorderPainted(false);
 		pay_btn.setFocusPainted(false);	
 		pay_btn.setBackground(Color.GREEN);
@@ -633,7 +648,7 @@ public class User_Screen extends JFrame{
 	
 	public void setDisplay() {		
 		setTitle("주문창");
-//		setUndecorated(true);
+		setUndecorated(true);
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);

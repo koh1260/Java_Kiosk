@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -87,7 +88,8 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 		
 		Container c = getContentPane();
 		c.setBackground(Color.white);
-		
+		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+		setUndecorated(true);
 		setTitle("회원가입");
 		setVisible(true);
 		setSize(400, 550);

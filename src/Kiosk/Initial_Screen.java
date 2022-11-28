@@ -28,7 +28,7 @@ public class Initial_Screen extends JFrame implements ActionListener{
 	}
 	
 	public void setDisplay() {		
-		setTitle("초기 화면");
+		setUndecorated(true);
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);
