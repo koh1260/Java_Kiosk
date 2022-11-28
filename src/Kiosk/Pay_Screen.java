@@ -32,7 +32,7 @@ public class Pay_Screen extends JFrame {
       // 배경 윗부분
       JPanel pay_north = new JPanel();
       pay_north.setLayout(null);
-      pay_north.setBackground(new Color(82, 113, 255));
+      pay_north.setBackground(new Color(107,167,240));
       pay_north.setBounds(0, 0, 700, 150);
       pay_background.add(pay_north);
       

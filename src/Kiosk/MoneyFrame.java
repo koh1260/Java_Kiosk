@@ -58,7 +58,7 @@ public class MoneyFrame extends JFrame {
          c.add(pa1, BorderLayout.NORTH);
          c.add(pa2, BorderLayout.CENTER);
          c.add(pa3, BorderLayout.SOUTH);
-         pa1.setBackground(new Color(82, 113, 255));
+         pa1.setBackground(new Color(107,167,240));
          pa1.add(lbl1);
          pa2.setLayout(null);
          c.add(imageLabel);
@@ -81,7 +81,7 @@ public class MoneyFrame extends JFrame {
          				
          			}
          			ex.number++;
-         			new StanNum();
+         			new OrderCom_Screen();
          			dispose();
          			return;
          		}

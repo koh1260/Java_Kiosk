@@ -56,7 +56,7 @@ public class creditcard extends JFrame {
          c.add(pa1, BorderLayout.NORTH);
          c.add(pa2, BorderLayout.CENTER);
          c.add(pa3, BorderLayout.SOUTH);
-         pa1.setBackground(new Color(82, 113, 255));
+         pa1.setBackground(new Color(107,167,240));
          pa1.add(lbl1);
          pa2.setLayout(null);
          c.add(imageLabel);
@@ -78,7 +78,7 @@ public class creditcard extends JFrame {
           				
           			}
           			ex.number++;
-          			new StanNum();
+          			new OrderCom_Screen();
          			dispose();
           		}
           		lbl2.setText(text[n]);
@@ -88,6 +88,5 @@ public class creditcard extends JFrame {
           ActionListener listener = new setTx();
           Timer t = new Timer(800, listener);
           t.start();
-        
           }
 }

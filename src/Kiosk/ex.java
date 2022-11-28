@@ -11,6 +11,6 @@ public class ex {
 
 	
 	public static void main(String[] args) {
-		new OrderCom_Screen();
+		new Initial_Screen();
 	}
 }
