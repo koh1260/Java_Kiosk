@@ -501,6 +501,7 @@ public class User_Screen extends JFrame{
 				
 				if(rs.next()) {
 					Menus[i] = new Menu();
+					Menus[i].setMenu_num(rs.getInt("menu_num"));
 					Menus[i].setName(rs.getString("menu_name"));
 					Menus[i].setPrice(rs.getInt("menu_price"));
 					Menus[i].setCarbo(rs.getInt("menu_carbo"));

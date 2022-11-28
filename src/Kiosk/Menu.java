@@ -1,6 +1,7 @@
 package Kiosk;
 
 public class Menu {
+	public int menu_num;
 	public String name;
 	public int count = 0;
 	public int carbo;
@@ -12,7 +13,14 @@ public class Menu {
 	public Menu() {
 		
 	}
+	public int getMenu_num() {
+		return menu_num;
+	}
 
+	public void setMenu_num(int menu_num) {
+		this.menu_num = menu_num;
+	}
+	
 	public String getName() {
 		return name;
 	}
