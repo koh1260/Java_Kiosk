@@ -11,6 +11,6 @@ public class ex {
 
 	
 	public static void main(String[] args) {
-		new Initial_Screen();
+		new MenuManage_Screen();
 	}
 }
