@@ -13,6 +13,7 @@ public class Admin_Screen extends JFrame {
    private JPanel contentPane;
    private JButton MemberBtn;
    private JButton OrderBtn;
+   private JButton SalesBtn;
    
    public Admin_Screen() {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,6 +36,15 @@ public class Admin_Screen extends JFrame {
     	  public void actionPerformed(ActionEvent e) {
     		  new MenuManage_Screen();
     		  dispose();
+    	  }
+      });
+      SalesBtn = new JButton("매출 관리");
+      add(SalesBtn);
+      SalesBtn.setBounds(70, 630, 550, 50);
+      SalesBtn.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		new SalesRecords_Screen();
+    		dispose();
     	  }
       });
       

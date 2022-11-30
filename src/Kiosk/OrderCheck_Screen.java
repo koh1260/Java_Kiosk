@@ -94,7 +94,7 @@ public class OrderCheck_Screen extends JFrame{
 		ok.setBackground(Color.LIGHT_GRAY);
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String inQuery = "insert into sales_records (sales_date, sales_counts, menu_name, menu_price) values(?,?, ?, ?)";
+				String inQuery = "insert into sales_records (sales_date, sales_counts, menu_name, menu_price, total_m) values(?,?, ?, ?, ?)";
 				for(Menu menu : menus) {
 					if(menu.count > 0) {
 				
@@ -107,6 +107,7 @@ public class OrderCheck_Screen extends JFrame{
 							ps.setInt(2, menu.count);
 							ps.setString(3, menu.name);
 							ps.setInt(4, menu.price);
+							ps.setInt(5, menu.count * menu.price);
 							
 							ps.executeUpdate();
 							
