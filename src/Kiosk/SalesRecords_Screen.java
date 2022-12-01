@@ -34,8 +34,8 @@ public class SalesRecords_Screen extends JFrame {
 	JTextField tf = new JTextField("ex) 2022-10"); // 텍스트 필드 초기화
 	JButton btnDate = new JButton(new ImageIcon("images/btnsearch.png")); // 버튼 생성
 	
-	JTextField tf2 = new JTextField("ex) 메뉴 이름"); // 텍스트 필드 초기화
-	JButton btnMenu = new JButton(new ImageIcon("images/btnsearch.png")); // 버튼 생성
+//	JTextField tf2 = new JTextField("ex) 메뉴 이름"); // 텍스트 필드 초기화
+	JButton btnMenu = new JButton(new ImageIcon("images/btnmenu.png")); // 버튼 생성
 
 	public SalesRecords_Screen() {
 		// 레이아웃 설정
@@ -59,10 +59,10 @@ public class SalesRecords_Screen extends JFrame {
 		btnDate.setFocusPainted(false);	
 		
 		//메뉴 텍스트 박스, 버튼
-		add(tf2);
-		tf2.setBounds(90, 510, 130, 32);
+//		add(tf2);
+//		tf2.setBounds(90, 510, 130, 32);
 		add(btnMenu);
-		btnMenu.setBounds(235, 510, 90, 32);
+		btnMenu.setBounds(90, 510, 130, 32);
 		btnMenu.setBorderPainted(false);
 		btnMenu.setFocusPainted(false);
 
