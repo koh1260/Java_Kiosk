@@ -73,6 +73,7 @@ public class Pay_Screen extends JFrame {
       card_btn.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
     		  new creditcard();
+    		  dispose();
     	  }
       });
       pay_background.add(card_btn);
@@ -108,6 +109,7 @@ public class Pay_Screen extends JFrame {
       cash_btn.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
     		  new MoneyFrame();
+    		  dispose();
     	  }
       });
       pay_background.add(cash_btn);

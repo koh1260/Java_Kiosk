@@ -33,7 +33,7 @@ public class User_Screen extends JFrame{
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
-	private JPanel logo;
+	private JLabel logo;
 	private JPanel menu_panel;
 	private JPanel basket;
 	private JPanel control_panel;
@@ -50,10 +50,13 @@ public class User_Screen extends JFrame{
 	private JButton init_btn;
 	private JButton pay_btn;
 	
+	User_Screen us;
+	
 //	private JButton[] menus;
 	
 	//--------------------------------생성자----------------------------------
 	public User_Screen() {
+		us = this;
 		setDisplay();
 		SqlQuery();
 		setPanel();
@@ -536,7 +539,7 @@ public class User_Screen extends JFrame{
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
 
 	public void setPanel() {
-		logo = new JPanel();
+		logo = new JLabel();
 		add(logo);
 		logo.setBounds(0,0,700,40);
 		logo.setBackground(new Color(109, 180, 242));
@@ -623,7 +626,7 @@ public class User_Screen extends JFrame{
 		pay_btn.setBackground(Color.GREEN);
 		pay_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new OrderCheck_Screen(Menus);
+				new OrderCheck_Screen(Menus,us);
 			}
 		});
 	}
