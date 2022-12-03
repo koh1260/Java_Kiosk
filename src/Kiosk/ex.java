@@ -1,7 +1,5 @@
 package Kiosk;
 
-import java.sql.Connection;
-
 public class ex {
 	public static int stan_number = 1;
 	public  static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
@@ -11,6 +9,6 @@ public class ex {
 
 	
 	public static void main(String[] args) {
-		new Initial_Screen();
+		new MenuManage_Screen();
 	}
 }
