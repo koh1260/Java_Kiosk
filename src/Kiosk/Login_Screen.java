@@ -30,6 +30,7 @@ public class Login_Screen extends JFrame{
 	private static String db_user = "root";
 	private static String db_pw = "1306";
 	
+	JLabel top= new JLabel(new ImageIcon("images/logintop.png"));
 	private JLabel userLabel;
 	private JLabel Pw;
 	private JTextField userTextF;
@@ -52,16 +53,25 @@ public class Login_Screen extends JFrame{
 	
 	
 	private void init() {
+		add(top);
+		top.setBounds(0,0,700,250);
+		top.setOpaque(true);
+		top.setBackground(Color.LIGHT_GRAY);
+		
 		userLabel = new JLabel("학번");
 		add(userLabel);
-		userLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		userLabel.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		Pw = new JLabel("비밀번호");
 		add(Pw);
-		Pw.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		Pw.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		userTextF = new JTextField();
 		add(userTextF);
+		userTextF.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		
 		PwF = new JPasswordField();
 		add(PwF);
+		PwF.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		
 		LoginB = new JButton(new ImageIcon("images/log.png"));
 		add(LoginB);
 		LoginB.setFont(new Font("맑은 고딕", Font.BOLD, 12));
@@ -143,11 +153,11 @@ public class Login_Screen extends JFrame{
 	
 	//컨텐츠 배치, 사이즈. 
 	public void setLocationAndSize() {
-		userLabel.setBounds(150,427,100,40);
-	    Pw.setBounds(150,490,100,40);
-	    userTextF.setBounds(275,427,170,40);
-	    PwF.setBounds(275,490,170,40);
-	    LoginB.setBounds(275,550,80,32);	
-	    Sign_upB.setBounds(363,550,80,32);
+		userLabel.setBounds(150,407,100,32);
+	    Pw.setBounds(150,470,100,32);
+	    userTextF.setBounds(275,407,170,32);
+	    PwF.setBounds(275,470,170,32);
+	    LoginB.setBounds(275,530,80,32);	
+	    Sign_upB.setBounds(363,530,80,32);
 	}
 }

@@ -25,10 +25,6 @@ public class User_Screen extends JFrame{
 	private static Connection con;
 	private static PreparedStatement ps;
 	private static ResultSet rs;
-//	
-//	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
-//	private static String db_user = "root";
-//	private static String db_pw = "1306";
 
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
@@ -40,7 +36,6 @@ public class User_Screen extends JFrame{
 	private Menus_panel menus_panel;
 	private basket_panel basket_panel;
 	
-//	private int[] menu_num_list = new int[6];
 	private int menu_num;
 	private int menu_state = -1;
 	private int total = 0;
@@ -52,8 +47,6 @@ public class User_Screen extends JFrame{
 	
 	User_Screen us;
 	
-//	private JButton[] menus;
-	
 	//--------------------------------생성자----------------------------------
 	public User_Screen() {
 		us = this;
@@ -61,12 +54,10 @@ public class User_Screen extends JFrame{
 		SqlQuery();
 		setPanel();
 		setControlPanel();
-//		menuBtn();
 		
 		ActionListener listener = new setTimer();
 	    Timer t = new Timer(1000, listener);
 	    t.start();
-//		timer();
 	}
 	//--------------------------------Timer---------------------------------
 	class setTimer implements ActionListener
@@ -102,8 +93,6 @@ public class User_Screen extends JFrame{
 			
 			for(int i = 0 ; i < 6; i++) {
 				 basket_menus[i] = new basket_menu();
-//				 add(basket_menus[i]);
-//				 basket_menus[i].setVisible(false);
 			}
 			total_panel = new JPanel();
 			total_panel.setLayout(new FlowLayout());
@@ -280,19 +269,15 @@ public class User_Screen extends JFrame{
 	//--------------------------------메뉴 목록---------------------------------
 	public class Menus_panel extends JPanel {
 		Menu_panel [] menu_panels = new Menu_panel[6];
-		String[] menu_images = {"images/don.png","images/noodle.png","images/om.png","images/gook.png","images/pasta.png","images/kimchi.png"};
 		public Menus_panel() {
 			setLayout(new GridLayout(2,3, 55, 25));
 			setBorder(BorderFactory.createEmptyBorder(10,15,20,15));
-//			setBackground(Color.CYAN);
+			
 			for(int i = 0;i < 6; i++) {
-				//이미지 사이즈 조정 후 넣기.
-				ImageIcon icon = new ImageIcon(menu_images[i]);
-				Image img = icon.getImage();
-				Image changeImg = img.getScaledInstance(186, 150, Image.SCALE_SMOOTH);
-				ImageIcon changeIcon = new ImageIcon(changeImg);
 				menu_panels[i] = new Menu_panel();
-				menu_panels[i].menu_icon.setIcon(new ImageIcon(menu_images[i]));
+				Image image = getToolkit().createImage(Menus[i].imageByte);
+				Image chImage = image.getScaledInstance(186, 150, Image.SCALE_SMOOTH);
+				menu_panels[i].menu_icon.setIcon(new ImageIcon(chImage));
 				menu_panels[i].menu_price.setText(Menus[i].price + "원");
 				add(menu_panels[i]);
 			}
@@ -309,9 +294,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[0].setMenuName();
 					total++;
 					total_money += Menus[0].getPrice();
-//					menu_num_list[menu_state] = 0;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[0].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -329,9 +311,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[1].setMenuName();
 					total++;
 					total_money += Menus[1].getPrice();
-//					menu_num_list[menu_state] = 1;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[1].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -349,9 +328,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[2].setMenuName();
 					total++;
 					total_money += Menus[2].getPrice();
-//					menu_num_list[menu_state] = 2;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[2].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -369,9 +345,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[3].setMenuName();
 					total++;
 					total_money += Menus[3].getPrice();
-//					menu_num_list[menu_state] = 3;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[3].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -389,9 +362,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[4].setMenuName();
 					total++;
 					total_money += Menus[4].getPrice();
-//					menu_num_list[menu_state] = 4;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[4].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -409,9 +379,6 @@ public class User_Screen extends JFrame{
 					basket_panel.basket_menus[5].setMenuName();
 					total++;
 					total_money += Menus[5].getPrice();
-//					menu_num_list[menu_state] = 5;
-//					System.out.println(menu_num_list[menu_state]);
-//					basket_panel.basket_menus[menu_state].setVisible(true);
 					menu_panels[5].menu_btns[0].setEnabled(false);
 					basket_panel.total_m.setText(total_money +"원");
 					total_count.setText("선택 메뉴  " + total+"개");
@@ -482,10 +449,7 @@ public class User_Screen extends JFrame{
 			menu_price.setOpaque(true);
 			menu_price.setBackground(Color.WHITE);
 			menu_price.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-			
-//			add(menu_name);
-//			menu_name.setBounds(10,10,30,30);
-			
+
 			add(menu_btns[0] = new JButton(new ImageIcon("images/sel.png")));
 			menu_btns[0].setBounds(1, 172, 91, 30);
 			menu_btns[0].setBorderPainted(false);
@@ -521,13 +485,13 @@ public class User_Screen extends JFrame{
 					Menus[i].setProtein(rs.getInt("menu_protein"));
 					Menus[i].setFat(rs.getInt("menu_fat"));
 					Menus[i].setKcal(rs.getInt("menu_kcal"));
+					Menus[i].setImageByte(rs.getBytes("image"));
 				}
 			}
-			System.out.println("연결 성공.");
 		}catch(ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}catch(SQLException e1) {
-//			System.out.println("연결 실패.");
+			System.out.println("fail");
 			e1.printStackTrace();
 		}
 	}
@@ -557,18 +521,6 @@ public class User_Screen extends JFrame{
 			menus_panel.menu_panels[i].setMenu_name(Menus[i].getName());
 		}
 	}
-	
-//	public void menuBtn() {
-//		menus = new JButton[6];
-//		
-//		for(int i = 0; i < 6; i++) {
-//			menus[i] = new JButton("menu" + Integer.toString(i+1));
-//			menus[i].setSize(30,30);
-//			menus[i].setBorderPainted(false);
-//			menus[i].setFocusPainted(false);
-//			add(menus[i]);
-//		}     
-//	}
 	
 	public void setControlPanel() {
 		timer = new JLabel("120초");		

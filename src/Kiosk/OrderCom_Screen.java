@@ -15,13 +15,12 @@ public class OrderCom_Screen extends JFrame{
 	JLabel logo = new JLabel(new ImageIcon("images/check_logo.png"));
 	JLabel orderComTx = new JLabel("주문이 완료되었습니다!", JLabel.CENTER);
 	JLabel orderNumTx = new JLabel("주문 번호", JLabel.CENTER);
-	JLabel orderNum = new JLabel("0 0 2", JLabel.CENTER);
+	JLabel orderNum = new JLabel("0 0 1", JLabel.CENTER);
 	JLabel waitTx = new JLabel("잠시만 기다려주세요.", JLabel.CENTER);
 	JLabel initTx = new JLabel("6초 뒤 처음 화면으로 이동합니다.", JLabel.CENTER);
 	
 	public OrderCom_Screen() {
 		Container c = getContentPane();
-		ex.stan_number++;
 		c.setBackground(Color.WHITE);
 		setDisplay();
 		setLabels();

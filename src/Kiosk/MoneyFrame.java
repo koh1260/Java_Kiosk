@@ -21,6 +21,7 @@ public class MoneyFrame extends JFrame {
       private JLabel lbl1, lbl2, lbl3, lbl4;
       
    public MoneyFrame() {
+	   ex.stan_number++;
 	   setTitle("현금 결제 창");
 	   setVisible(true);
 	   setSize(670,600);
@@ -80,10 +81,8 @@ public class MoneyFrame extends JFrame {
          			}catch(InterruptedException e1) {
          				
          			}
-         			ex.number++;
          			new OrderCom_Screen();
          			dispose();
-         			return;
          		}
          		lbl2.setText(text[n]);
          	}
