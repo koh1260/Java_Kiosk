@@ -9,6 +9,7 @@ public class Menu {
 	public int fat=0;
 	public int kcal=0;
 	public int price=0;
+	public byte[] imageByte;
 	
 	public Menu() {
 		
@@ -76,7 +77,12 @@ public class Menu {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+	public byte[] getImageByte() {
+		return imageByte;
+	}
+	public void setImageByte(byte[] imageByte) {
+		this.imageByte = imageByte;
+	}
 	public void add() {
 		this.count++;
 	}

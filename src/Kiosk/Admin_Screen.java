@@ -18,6 +18,7 @@ public class Admin_Screen extends JFrame {
 	private JButton OrderBtn;
 	private JButton SalesBtn;
 	private JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
+	
 
 	public Admin_Screen() {
 		
@@ -47,7 +48,7 @@ public class Admin_Screen extends JFrame {
 		contentPane.add(OrderBtn);
 		OrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MenuManage_Screen();
+				Login_Screen.mms = new MenuManage_Screen();
 				dispose();
 			}
 		});

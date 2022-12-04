@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -26,12 +27,13 @@ public class MenuManage_Screen extends JFrame {
 	PreparedStatement ps;
 	Statement st;
 	ResultSet rs;
-	
+		
 	Container c = getContentPane();
 	
 	MenusPanel menusPanel;
 	JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
 	JButton btnRefresh = new JButton("Refresh");
+	JButton btnHome = new JButton();
 	
 	Menu[] Menus = new Menu[6];
 	
@@ -63,6 +65,7 @@ public class MenuManage_Screen extends JFrame {
 					Menus[i].setProtein(rs.getInt("menu_protein"));
 					Menus[i].setFat(rs.getInt("menu_fat"));
 					Menus[i].setKcal(rs.getInt("menu_kcal"));
+					Menus[i].setImageByte(rs.getBytes("image"));
 				}else {
 					Menus[i] = new Menu();
 				}
@@ -119,17 +122,23 @@ public class MenuManage_Screen extends JFrame {
 				menuName.setText("메뉴를 등록해주세요.");
 				btnIn.setEnabled(true);
 				btnOut.setEnabled(false);
+				
 			}else {
 				img = new JLabel("메뉴 이미지");
-				menuName.setText("메뉴 이름");
+				menuName.setText(menu.name);
 				btnIn.setEnabled(false);
 				btnOut.setEnabled(true);
+				Image image = getToolkit().createImage(menu.imageByte);
+				Image chImage = image.getScaledInstance(213, 190, Image.SCALE_SMOOTH);
+				img.setIcon(new ImageIcon(chImage));
+				
 			}
 			
 			add(img);
 			img.setBounds(0,0, 213, 190);
 			img.setOpaque(true);
 			img.setBackground(Color.darkGray);
+			
 			
 			add(menuName);
 			menuName.setBounds(0,190, 213, 50);
@@ -167,7 +176,6 @@ public class MenuManage_Screen extends JFrame {
 			btnIn.setBackground(Color.LIGHT_GRAY);
 			btnIn.setBounds(getVisibleRect());
 			btnIn.setBounds(3, 242, 102, 40);
-			btnIn.setEnabled(false);
 			btnIn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 //					String delQuery = String.format("delete from menu where menu_num = %s", menu.menu_num);
@@ -209,13 +217,22 @@ public class MenuManage_Screen extends JFrame {
 		menusPanel = new MenusPanel();
 		add(menusPanel);
 		menusPanel.setBackground(Color.white);
-		menusPanel.setBounds(0,300,700, 600);	
+		menusPanel.setBounds(0,200,700, 600);	
 		
 		add(title);
 		title.setBounds(0, 0, 700, 40);
 		
+		add(btnHome);
+		btnHome.setBounds(640, 40, 60,60);
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Admin_Screen();
+				dispose();
+			}
+		});
+		
 		add(btnRefresh);
-		btnRefresh.setBounds(50,50,50,50);
+		btnRefresh.setBounds(0,40,50,50);
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MenuManage_Screen();

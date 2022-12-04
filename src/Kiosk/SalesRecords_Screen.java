@@ -33,8 +33,7 @@ public class SalesRecords_Screen extends JFrame {
 	JLabel label;// 레이블 생성ㅣ
 	JTextField tf = new JTextField("ex) 2022-10"); // 텍스트 필드 초기화
 	JButton btnDate = new JButton(new ImageIcon("images/btnsearch.png")); // 버튼 생성
-	
-//	JTextField tf2 = new JTextField("ex) 메뉴 이름"); // 텍스트 필드 초기화
+	JButton btnHome = new JButton();
 	JButton btnMenu = new JButton(new ImageIcon("images/btnmenu.png")); // 버튼 생성
 
 	public SalesRecords_Screen() {
@@ -49,20 +48,27 @@ public class SalesRecords_Screen extends JFrame {
 		// 프레임에 각 항목 추가
 		add(title);
 		title.setBounds(0,0,700,40);
+		
+		//홈 버튼
+		add(btnHome);
+		btnHome.setBounds(640, 40, 60,60);
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Admin_Screen();
+				dispose();
+			}
+		});
 
 		//날짜 텍스트 박스, 버튼
 		add(tf);
-		tf.setBounds(90, 110, 130, 32);
+		tf.setBounds(112, 110, 130, 32);
 		add(btnDate);
-		btnDate.setBounds(235, 110, 90, 32);
+		btnDate.setBounds(257, 110, 90, 32);
 		btnDate.setBorderPainted(false);
 		btnDate.setFocusPainted(false);	
 		
-		//메뉴 텍스트 박스, 버튼
-//		add(tf2);
-//		tf2.setBounds(90, 510, 130, 32);
 		add(btnMenu);
-		btnMenu.setBounds(90, 510, 130, 32);
+		btnMenu.setBounds(112, 510, 130, 32);
 		btnMenu.setBorderPainted(false);
 		btnMenu.setFocusPainted(false);
 

@@ -33,14 +33,14 @@ public class User_Screen extends JFrame{
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
-	private JLabel logo;
+	private JLabel logo = new JLabel(new ImageIcon("images/titlebar.png"));
 	private JPanel menu_panel;
 	private JPanel basket;
 	private JPanel control_panel;
 	private Menus_panel menus_panel;
 	private basket_panel basket_panel;
 	
-	private int[] menu_num_list = new int[6];
+//	private int[] menu_num_list = new int[6];
 	private int menu_num;
 	private int menu_state = -1;
 	private int total = 0;
@@ -300,7 +300,6 @@ public class User_Screen extends JFrame{
 			menu_panels[0].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[0].setCount(Menus[0].getCount() + 1);
-					System.out.println(Menus[0].getCount());
 					menu_state++;
 					basket_panel.add(basket_panel.basket_menus[0]);
 					basket_panel.basket_menus[0].setVisible(true);
@@ -321,7 +320,6 @@ public class User_Screen extends JFrame{
 			menu_panels[1].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[1].setCount(Menus[1].getCount() + 1);
-					System.out.println(Menus[1].getCount());
 					menu_state++;
 					basket_panel.add(basket_panel.basket_menus[1]);
 					basket_panel.basket_menus[1].setVisible(true);
@@ -342,7 +340,6 @@ public class User_Screen extends JFrame{
 			menu_panels[2].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[2].setCount(Menus[2].getCount() + 1);
-					System.out.println(Menus[2].getCount());
 					menu_state++;
 					basket_panel.add(basket_panel.basket_menus[2]);
 					basket_panel.basket_menus[2].setVisible(true);
@@ -363,7 +360,6 @@ public class User_Screen extends JFrame{
 			menu_panels[3].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[3].setCount(Menus[3].getCount() + 1);
-					System.out.println(Menus[3].getCount());
 					menu_state++;
 					basket_panel.add(basket_panel.basket_menus[3]);
 					basket_panel.basket_menus[3].setVisible(true);
@@ -384,7 +380,6 @@ public class User_Screen extends JFrame{
 			menu_panels[4].menu_btns[0].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Menus[4].setCount(Menus[4].getCount() + 1);
-					System.out.println(Menus[4].getCount());
 					menu_state++;
 					basket_panel.add(basket_panel.basket_menus[4]);
 					basket_panel.basket_menus[4].setVisible(true);
@@ -539,7 +534,6 @@ public class User_Screen extends JFrame{
 	//---------------------------MySQL 연동, 쿼리 작성----------------------------
 
 	public void setPanel() {
-		logo = new JLabel();
 		add(logo);
 		logo.setBounds(0,0,700,40);
 		logo.setBackground(new Color(109, 180, 242));

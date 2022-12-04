@@ -4,27 +4,60 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MenuRegist extends JFrame {
+	Connection con;
+	PreparedStatement ps;
+	
 	menuImage menuImg = new menuImage();
 	JLabel menuName = new JLabel("메뉴명", JLabel.CENTER);
 	JLabel menuPrice = new JLabel("가격", JLabel.CENTER);
+	JLabel pictureBox = new JLabel(new ImageIcon("images/titlebar.png"));
 	
 	JTextField tfName = new JTextField("name");
 	JTextField tfPrice = new JTextField("price");
-
+	JTextField tfCar = new JTextField();
+	JTextField tfProtein = new JTextField();
+	JTextField tfFat = new JTextField();
+	JTextField tfKcal = new JTextField();
+	
+	BufferedImage bImage;
+	ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	FileInputStream fis;
+	
 	ImageIcon icon;
 	Image img;
+	byte [] data;
 	
+	String imgPath;
+	
+	JButton btnImgsel;
 	JButton btnOk;
 	NuPanel np = new NuPanel();
+	
 	int index;
 	
 	public MenuRegist(int index) {
@@ -47,14 +80,9 @@ public class MenuRegist extends JFrame {
 		JLabel protein = new JLabel("단백질(g)", JLabel.CENTER);
 		JLabel fat = new JLabel("지방(g)", JLabel.CENTER);
 		JLabel kcal = new JLabel("칼로리(kcal)", JLabel.CENTER);
-		
-		JTextField tfCar = new JTextField();
-		JTextField tfProtein = new JTextField();
-		JTextField tfFat = new JTextField();
-		JTextField tfKcal = new JTextField();
-		
+
 		public NuPanel() {
-			setSize(400, 150);
+			setSize(400, 145);
 			setBackground(Color.LIGHT_GRAY);
 			
 			add(car);
@@ -88,11 +116,82 @@ public class MenuRegist extends JFrame {
 	}
 	
 	public void setComponent() {
-//		pictureBox = new JLabel();
-//		add(pictureBox);
-//
-//		pictureBox.setOpaque(true);
-//		pictureBox.setBackground(Color.LIGHT_GRAY);
+		pictureBox = new JLabel();
+		add(pictureBox);
+		pictureBox.setOpaque(true);
+		pictureBox.setBackground(Color.LIGHT_GRAY);
+		pictureBox.setBounds(getBounds());
+		pictureBox.setBounds(165,30, 170, 180);
+		
+		btnOk = new JButton();
+		add(btnOk);
+		btnOk.setBounds(205, 550, 90, 32);
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String menuQuery = "INSERT INTO menu (menu_num, menu_name, menu_price, menu_carbo, menu_protein, menu_fat, menu_kcal, image) values(?,?,?,?,?,?,?,?)";
+				
+				try {
+					fis = new FileInputStream(imgPath);
+					
+					con = DriverManager.getConnection(ex.db_url, ex.db_user, ex.db_pw);
+					ps = con.prepareStatement(menuQuery);
+					ps.setInt(1, index);
+					ps.setString(2, tfName.getText());
+					ps.setInt(3, Integer.parseInt(tfPrice.getText()));
+					ps.setInt(4, Integer.parseInt(tfCar.getText()));
+					ps.setInt(5, Integer.parseInt(tfProtein.getText()));
+					ps.setInt(6, Integer.parseInt(tfFat.getText()));
+					ps.setInt(7, Integer.parseInt(tfKcal.getText()));
+					ps.setBinaryStream(8, fis);
+					
+					ps.executeUpdate();
+
+					
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				new MenuManage_Screen();
+				dispose();
+			}
+		});
+		
+		btnImgsel = new JButton();
+		add(btnImgsel);
+		btnImgsel.setBounds(0,0,40,40);
+		btnImgsel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser(System.getProperty("user.home"));
+				fc.addChoosableFileFilter(new FileNameExtensionFilter("Image files",
+				          new String[] { "png", "jpg", "jpeg"}));
+				fc.showOpenDialog(null);
+				imgPath = fc.getSelectedFile().toString();
+				
+				try {
+					bImage = ImageIO.read(new File(imgPath));
+					Image chImg = bImage.getScaledInstance(170, 180, Image.SCALE_SMOOTH);
+					pictureBox.setIcon(new ImageIcon(chImg));
+					System.out.println(data);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				System.out.println(imgPath);
+//				try {
+//					img = ImageIO.read(fc.getSelectedFile());
+//					 if (img != null) {
+//						 imgPath = fc.getSelectedFile().toString();
+//					 }
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+			}
+		});
 		
 		menuName.setBounds(175, 225, 150, 30);
 		menuName.setFont(new Font("맑은 고딕", Font.BOLD, 15));
@@ -109,13 +208,13 @@ public class MenuRegist extends JFrame {
 		add(tfPrice);
 
 		icon = new ImageIcon("images/titlebar.png");
-		img = icon.getImage();
-		add(menuImg);
-		menuImg.setBounds(165,30, 170, 180);
-		menuImg.setBackground(Color.LIGHT_GRAY);
+//		img = icon.getImage();
+//		add(menuImg);
+//		menuImg.setBounds(165,30, 170, 180);
+//		menuImg.setBackground(Color.LIGHT_GRAY);
 		
 		add(np);
-		np.setLocation(50, 395);
+		np.setLocation(50, 390);
 		np.setLayout(null);
 	}
 	
@@ -124,6 +223,7 @@ public class MenuRegist extends JFrame {
 		setVisible(true);
 		setSize(500,600);
 		this.getContentPane().setBackground(Color.white);
+		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
