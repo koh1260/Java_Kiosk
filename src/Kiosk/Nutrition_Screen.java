@@ -36,7 +36,7 @@ public class Nutrition_Screen extends JFrame{
 
 	public Nutrition_Screen(){
 		setVisible(true);
-		setSize(670,600);
+		setSize(300,400);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(new GridLayout(6, 1));

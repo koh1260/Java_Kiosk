@@ -29,18 +29,18 @@ public class SalesRecords_Screen extends JFrame {
 	PreparedStatement ps;
 	ResultSet rs;
 
-	JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
+	JLabel title = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
 	JLabel label;// 레이블 생성ㅣ
 	JTextField tf = new JTextField("ex) 2022-10"); // 텍스트 필드 초기화
-	JButton btnDate = new JButton(new ImageIcon("images/btnsearch.png")); // 버튼 생성
-	JButton btnHome = new JButton();
-	JButton btnMenu = new JButton(new ImageIcon("images/btnmenu.png")); // 버튼 생성
+	JButton btnDate = new JButton(new ImageIcon(getClass().getClassLoader().getResource("btnsearch.png"))); // 버튼 생성
+	JButton btnHome = new JButton(new ImageIcon(getClass().getClassLoader().getResource("home.png")));
+	JButton btnMenu = new JButton(new ImageIcon(getClass().getClassLoader().getResource("btnmenu.png"))); // 버튼 생성
 
 	public SalesRecords_Screen() {
 		// 레이아웃 설정
 		this.getContentPane().setBackground(Color.white);
 		getContentPane().setLayout(null);
-		setUndecorated(true);
+//		setUndecorated(true);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		setVisible(true);
 		setSize(700, 900);
@@ -146,7 +146,7 @@ public class SalesRecords_Screen extends JFrame {
 					jt.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 					jt.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 
-					System.out.println("connect");
+					con.close();
 
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
@@ -189,7 +189,7 @@ public class SalesRecords_Screen extends JFrame {
 					jt2.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 					jt2.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
 
-					System.out.println("connect");
+					con.close();
 
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();

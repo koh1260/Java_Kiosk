@@ -17,16 +17,16 @@ public class Admin_Screen extends JFrame {
 	private JButton MemberBtn;
 	private JButton OrderBtn;
 	private JButton SalesBtn;
-	private JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
+	private JLabel title = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
 	
 
 	public Admin_Screen() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("AdminPage");
+//		setTitle("AdminPage");
 		setSize(700, 900);
 		setLocationRelativeTo(null);
-		setUndecorated(true);
+//		setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -35,24 +35,23 @@ public class Admin_Screen extends JFrame {
 		add(title);
 		title.setBounds(0, 0, 700, 40);
 
-		MemberBtn = new JButton(new ImageIcon("images/usermanage.png"));
+		MemberBtn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("usermanage.png")));
 		MemberBtn.setBounds(70, 100, 550, 200);
 		MemberBtn.setBorderPainted(false);
 		MemberBtn.setFocusPainted(false);
 		contentPane.add(MemberBtn);
 
-		OrderBtn = new JButton(new ImageIcon("images/menumanage.png"));
+		OrderBtn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("menumanage.png")));
 		OrderBtn.setBounds(70, 370, 550, 200);
 		OrderBtn.setBorderPainted(false);
 		OrderBtn.setFocusPainted(false);
 		contentPane.add(OrderBtn);
 		OrderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login_Screen.mms = new MenuManage_Screen();
-				dispose();
+				new MenuManage_Screen();
 			}
 		});
-		SalesBtn = new JButton(new ImageIcon("images/moneymanage.png"));
+		SalesBtn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("moneymanage.png")));
 		add(SalesBtn);
 		SalesBtn.setBounds(70, 640, 550, 200);
 		SalesBtn.setBorderPainted(false);

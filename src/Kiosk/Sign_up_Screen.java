@@ -89,7 +89,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 		Container c = getContentPane();
 		c.setBackground(Color.white);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		setUndecorated(true);
+//		setUndecorated(true);
 		setTitle("회원가입");
 		setVisible(true);
 		setSize(400, 550);
@@ -156,6 +156,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 						ps1.setString(4, phone_number.trim());
 						ps1.executeUpdate();
 						
+						con.close();
 						JOptionPane.showMessageDialog(this, "회원가입 완료.");
 						setVisible(false);
 

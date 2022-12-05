@@ -1,34 +1,34 @@
 package Kiosk;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
-public class Initial_Screen extends JFrame implements ActionListener{
-	private JButton b; 
+public class Initial_Screen extends JFrame{
+	private JButton b = new JButton(new ImageIcon(getClass().getClassLoader().getResource("init_screen.png")));; 
 
 	public Initial_Screen(){
-		init();
 		setDisplay();
 		b_setting();
-		addActionEvent();
 	}
-	
-	private void init() {
-		b = new JButton(new ImageIcon("images/init_screen.png"));
-	}
+
 	public void b_setting() {
 		b.setBounds(0,0,700, 900);
 		b.setBorderPainted(false);
 		b.setFocusPainted(false);	
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Login_Screen();
+				dispose();
+			}
+		});
+		add(b);
 	}
 	
 	public void setDisplay() {		
-		setUndecorated(true);
+//		setUndecorated(true);
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);
@@ -37,16 +37,11 @@ public class Initial_Screen extends JFrame implements ActionListener{
 		setLocationRelativeTo(null);
 		
 		add(b);
-	}
-	
-	public void addActionEvent() {
-		b.addActionListener(this);
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == b) {
-			new Login_Screen();
-			setVisible(false);
-		}
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Login_Screen();
+				dispose();
+			}
+		});
 	}
 }

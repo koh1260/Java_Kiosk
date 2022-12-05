@@ -39,7 +39,7 @@ public class StanNum extends JFrame{
 	
 
 	public void setDisplay() {
-		setUndecorated(true);
+//		setUndecorated(true);
 		setVisible(true);
 		setSize(400,500);
 		setResizable(false);

@@ -1,5 +1,6 @@
 package Kiosk;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -29,7 +30,7 @@ public class User_Screen extends JFrame{
 	private Menu[] Menus = new Menu[6];
 	int menu_panel_num = -1;
 	int num = 1;
-	private JLabel logo = new JLabel(new ImageIcon("images/titlebar.png"));
+	private JLabel logo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
 	private JPanel menu_panel;
 	private JPanel basket;
 	private JPanel control_panel;
@@ -45,13 +46,13 @@ public class User_Screen extends JFrame{
 	private JButton init_btn;
 	private JButton pay_btn;
 	
-	User_Screen us;
+	public static User_Screen us;
 	
 	//--------------------------------생성자----------------------------------
 	public User_Screen() {
 		us = this;
-		setDisplay();
 		SqlQuery();
+		setDisplay();
 		setPanel();
 		setControlPanel();
 		
@@ -204,8 +205,8 @@ public class User_Screen extends JFrame{
 		int index;
 		int count = 0;
 		Menu menu = new Menu();
-		JButton plus = new JButton(new ImageIcon("images/plus.png"));
-		JButton minus = new JButton(new ImageIcon("images/minus.png")); 
+		JButton plus = new JButton(new ImageIcon(getClass().getClassLoader().getResource("plus.png")));
+		JButton minus = new JButton(new ImageIcon(getClass().getClassLoader().getResource("minus.png"))); 
 		JLabel counts = new JLabel();
 		JLabel menu_name = new JLabel();
 		JLabel price = new JLabel();
@@ -450,12 +451,12 @@ public class User_Screen extends JFrame{
 			menu_price.setBackground(Color.WHITE);
 			menu_price.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 
-			add(menu_btns[0] = new JButton(new ImageIcon("images/sel.png")));
-			menu_btns[0].setBounds(1, 172, 91, 30);
+			add(menu_btns[0] = new JButton(new ImageIcon(getClass().getClassLoader().getResource("sel.png"))));
+			menu_btns[0].setBounds(0, 172, 90, 30);
 			menu_btns[0].setBorderPainted(false);
 			menu_btns[0].setFocusPainted(false);	
-			add(menu_btns[1] = new JButton(new ImageIcon("images/nu.png")));
-			menu_btns[1].setBounds(94, 172, 91, 30);
+			add(menu_btns[1] = new JButton(new ImageIcon(getClass().getClassLoader().getResource("nu.png"))));
+			menu_btns[1].setBounds(91, 172, 90, 30);
 			menu_btns[1].setBorderPainted(false);
 			menu_btns[1].setFocusPainted(false);
 		}
@@ -488,6 +489,10 @@ public class User_Screen extends JFrame{
 					Menus[i].setImageByte(rs.getBytes("image"));
 				}
 			}
+			
+			con.close();
+			ps.close();
+			rs.close();
 		}catch(ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}catch(SQLException e1) {
@@ -504,17 +509,17 @@ public class User_Screen extends JFrame{
 		
 		menus_panel = new Menus_panel();
 		add(menus_panel);
-		menus_panel.setBounds(1,40, 700, 459);
+		menus_panel.setBounds(1,40, 685, 459);
 		
 		basket_panel = new basket_panel();
 		add(basket_panel);
-		basket_panel.setBounds(15,505, 500, 380 );
+		basket_panel.setBounds(15,505, 500, 340 );
 		
 		control_panel = new JPanel();
 		add(control_panel);
-		control_panel.setBounds(515,500, 200, 400 );
+		control_panel.setBounds(515,500, 165, 350 );
 		control_panel.setLayout(null);
-		control_panel.setBackground(new Color(238, 238, 238));
+		control_panel.setBackground(new Color(238, 238, 250));
 	}
 	public void menusPanelSet() {
 		for(int i = 0 ; i < 6; i ++) {
@@ -527,7 +532,7 @@ public class User_Screen extends JFrame{
 		control_panel.add(timer);
 		timer.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		timer.setOpaque(true);
-		timer.setBounds(0,0,185, 75);
+		timer.setBounds(7,0,155, 75);
 		timer.setBackground(new Color(238, 238, 238));
 		timer.setHorizontalAlignment(JLabel.CENTER);
 		
@@ -535,15 +540,15 @@ public class User_Screen extends JFrame{
 		control_panel.add(total_count);
 		total_count.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		total_count.setOpaque(true);
-		total_count.setBounds(0,85,185, 75);
+		total_count.setBounds(7,85,155, 75);
 		total_count.setBackground(new Color(238, 238, 238));
 		total_count.setHorizontalAlignment(JLabel.CENTER);	
 		
-		init_btn = new JButton(new ImageIcon("images/init_btn.png"));
+		init_btn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("init_btn.png")));
 		control_panel.add(init_btn);
 		init_btn.setBorder(null);
 		init_btn.setOpaque(true);
-		init_btn.setBounds(0,175,185, 75);
+		init_btn.setBounds(7,175,155, 75);
 		init_btn.setBorderPainted(false);
 		init_btn.setFocusPainted(false);	
 		init_btn.setBackground(Color.magenta);
@@ -563,10 +568,10 @@ public class User_Screen extends JFrame{
 			}
 		});
 		
-		pay_btn = new JButton(new ImageIcon("images/pay_btn.png"));
+		pay_btn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("pay_btn.png")));
 		control_panel.add(pay_btn);
 		pay_btn.setOpaque(true);
-		pay_btn.setBounds(0,255,185, 135);
+		pay_btn.setBounds(7,255,155, 90);
 		pay_btn.setBorderPainted(false);
 		pay_btn.setFocusPainted(false);	
 		pay_btn.setBackground(Color.GREEN);
@@ -589,15 +594,14 @@ public class User_Screen extends JFrame{
 				}
 				
 				if(i == 0) {
-					new Login_Screen();
-					dispose();
+					new Initial_Screen();
+					setVisible(false);
 				}
 		}
 	}
 	
 	public void setDisplay() {		
-		setTitle("주문창");
-		setUndecorated(true);
+//		setUndecorated(true);
 		setVisible(true);
 		setSize(700, 900);
 		setLayout(null);

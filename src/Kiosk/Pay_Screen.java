@@ -7,11 +7,12 @@ import javax.swing.*;
 
 
 public class Pay_Screen extends JFrame {
-	public Menu[] menus = new Menu[6];
+//	public Menu[] menus = new Menu[6];
 	
-   public Pay_Screen(Menu[] menus) {
+   public Pay_Screen() {
       // 기본 설정
-	   this.menus = menus;
+//	   this.menus = menus;
+//	   setUndecorated(true);
 	   setVisible(true);
 	   setSize(700, 900);
 	   setLayout(null);
@@ -44,7 +45,7 @@ public class Pay_Screen extends JFrame {
       pay_north.add(title_label);
       
       // 배경 윗부분 - 아이콘(동의대학교 로고)
-      ImageIcon logo_icon = new ImageIcon("images/logo.png");
+      ImageIcon logo_icon = new ImageIcon(getClass().getClassLoader().getResource("logo.png"));
       JLabel logo_label = new JLabel(logo_icon);
       logo_label.setBounds(540, 10, 130, 130);
       logo_label.setForeground(Color.white);
@@ -79,7 +80,7 @@ public class Pay_Screen extends JFrame {
       pay_background.add(card_btn);
       
       // 카드 결제 버튼 - 아이콘(카드 결제)
-      ImageIcon card_icon = new ImageIcon("images/card.png");
+      ImageIcon card_icon = new ImageIcon(getClass().getClassLoader().getResource("card.png"));
       JLabel card_icon_label = new JLabel(card_icon);
       card_icon_label.setLayout(null);
       card_icon_label.setBounds(0, 12, 250, 250);
@@ -115,7 +116,7 @@ public class Pay_Screen extends JFrame {
       pay_background.add(cash_btn);
       
       // 현금 결제 버튼 - 아이콘(현금 결제)
-      ImageIcon cash_icon = new ImageIcon("images/money.png");
+      ImageIcon cash_icon = new ImageIcon(getClass().getClassLoader().getResource("money.png"));
       JLabel cash_icon_label = new JLabel(cash_icon);
       cash_icon_label.setLayout(null);
       cash_icon_label.setBounds(0, 12, 250, 250);

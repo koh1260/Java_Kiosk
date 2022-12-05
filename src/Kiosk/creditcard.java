@@ -1,20 +1,27 @@
 package Kiosk;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class creditcard extends JFrame {
+	Timer t;
 	private Font f1;
 	private Font f2;
 	private Font f3;
 	private Font f4;
 	private JLabel lbl1, lbl2, lbl3, lbl4;
 	Menu[] menus = new Menu[6];
+	int n = 0;
 
 	public creditcard() {
 		ex.stan_number++;
@@ -40,7 +47,7 @@ public class creditcard extends JFrame {
 		String[] text = { "카드를 넣어주세요. .", "카드를 넣어주세요. . .", "결제 중입니다.", "결제 중입니다. .", "결제 중입니다. . .", "결제가 완료되었습니다.",
 				"결제가 완료되었습니다.", "결제가 완료되었습니다." };
 
-		ImageIcon img = new ImageIcon("images/card.png");
+		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("card.png"));
 		JLabel imageLabel = new JLabel(img);
 
 		lbl2 = new JLabel("카드를 넣어주세요.");
@@ -73,15 +80,15 @@ public class creditcard extends JFrame {
 
 					}
 					new OrderCom_Screen();
+					t.stop();
 					dispose();
-					return;
 				}
 				lbl2.setText(text[n]);
 			}
 		}
 
 		ActionListener listener = new setTx();
-		Timer t = new Timer(800, listener);
+		t = new Timer(800, listener);
 		t.start();
 	}
 }

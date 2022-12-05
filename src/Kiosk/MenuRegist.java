@@ -219,7 +219,7 @@ public class MenuRegist extends JFrame {
 	}
 	
 	public void setDisplay() {
-		setUndecorated(true);
+//		setUndecorated(true);
 		setVisible(true);
 		setSize(500,600);
 		this.getContentPane().setBackground(Color.white);

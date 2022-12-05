@@ -26,11 +26,7 @@ public class Login_Screen extends JFrame{
 	private static PreparedStatement ps2;
 	private static ResultSet rs2;
 	
-	private static String db_url = "jdbc:mysql://localhost:13306/java_kiosk";
-	private static String db_user = "root";
-	private static String db_pw = "1306";
-	
-	JLabel top= new JLabel(new ImageIcon("images/logintop.png"));
+	JLabel top= new JLabel(new ImageIcon(getClass().getClassLoader().getResource("logintop.png")));
 	private JLabel userLabel;
 	private JLabel Pw;
 	private JTextField userTextF;
@@ -38,19 +34,12 @@ public class Login_Screen extends JFrame{
 	private JButton LoginB;
 	private JButton Sign_upB;
 	
-	public static MenuManage_Screen mms;
-	
 	//생성자. 
 	public Login_Screen() {
 	    setDisplay();
 	    init();
 	    setLocationAndSize();
-	    
-
-		
-
 	}
-	
 	
 	private void init() {
 		add(top);
@@ -72,7 +61,7 @@ public class Login_Screen extends JFrame{
 		add(PwF);
 		PwF.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		
-		LoginB = new JButton(new ImageIcon("images/log.png"));
+		LoginB = new JButton(new ImageIcon(getClass().getClassLoader().getResource("log.png")));
 		add(LoginB);
 		LoginB.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		LoginB.setBorderPainted(false);
@@ -114,6 +103,12 @@ public class Login_Screen extends JFrame{
 						}else {
 							JOptionPane.showMessageDialog(null, "존재하지 않는 학번입니다.");
 						}
+						
+						con.close();
+						ps1.close();
+						ps2.close();
+						rs1.close();
+						rs2.close();
 					}catch(ClassNotFoundException e1) {
 						e1.printStackTrace();
 					}catch(SQLException e1) {
@@ -124,7 +119,7 @@ public class Login_Screen extends JFrame{
 			}
 		});
 		
-		Sign_upB = new JButton(new ImageIcon("images/sign.png"));
+		Sign_upB = new JButton(new ImageIcon(getClass().getClassLoader().getResource("sign.png")));
 		add(Sign_upB);
 		Sign_upB.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		Sign_upB.setBorderPainted(false);
@@ -144,7 +139,7 @@ public class Login_Screen extends JFrame{
 		setLayout(null);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		c.setBackground(Color.white);
-		setUndecorated(true);
+//		setUndecorated(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
