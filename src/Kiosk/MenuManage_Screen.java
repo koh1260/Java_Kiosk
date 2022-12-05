@@ -123,7 +123,7 @@ public class MenuManage_Screen extends JFrame {
 			
 			//메뉴 존재 여부 검사.
 			if(menu.menu_num == 0) {
-				Image image = new ImageIcon("nomenu.png").getImage();
+				Image image = new ImageIcon(getClass().getClassLoader().getResource("nomenu.png")).getImage();
 				Image chImage = image.getScaledInstance(191, 188, Image.SCALE_SMOOTH);
 				img = new JLabel(new ImageIcon(chImage));
 				menuName.setText("메뉴를 등록해주세요.");
@@ -177,7 +177,9 @@ public class MenuManage_Screen extends JFrame {
 					}
 					JOptionPane.showMessageDialog(null, "메뉴가 삭제되었습니다." , "메뉴 삭제", JOptionPane.PLAIN_MESSAGE);
 					menuName.setText("메뉴를 등록해주세요");
-					img.setIcon(new ImageIcon("nomenu.png"));
+					Image image = new ImageIcon(getClass().getClassLoader().getResource("nomenu.png")).getImage();
+					Image chImage = image.getScaledInstance(191, 188, Image.SCALE_SMOOTH);
+					img.setIcon(new ImageIcon(chImage));
 					btnOut.setEnabled(false);
 					btnIn.setEnabled(true);
 				}
@@ -212,7 +214,7 @@ public class MenuManage_Screen extends JFrame {
 		menusPanel = new MenusPanel();
 		add(menusPanel);
 		menusPanel.setBackground(Color.white);
-		menusPanel.setBounds(0,180,680, 600);	
+		menusPanel.setBounds(0,160,680, 600);	
 		
 		add(title);
 		title.setBounds(0, 0, 700, 40);

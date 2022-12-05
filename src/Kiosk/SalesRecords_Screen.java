@@ -51,7 +51,7 @@ public class SalesRecords_Screen extends JFrame {
 		
 		//홈 버튼
 		add(btnHome);
-		btnHome.setBounds(640, 40, 60,60);
+		btnHome.setBounds(622, 40, 60,60);
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Admin_Screen();
@@ -61,21 +61,21 @@ public class SalesRecords_Screen extends JFrame {
 
 		//날짜 텍스트 박스, 버튼
 		add(tf);
-		tf.setBounds(112, 110, 130, 32);
+		tf.setBounds(90, 110, 130, 32);
 		add(btnDate);
-		btnDate.setBounds(257, 110, 90, 32);
+		btnDate.setBounds(235, 110, 90, 32);
 		btnDate.setBorderPainted(false);
 		btnDate.setFocusPainted(false);	
 		
 		add(btnMenu);
-		btnMenu.setBounds(112, 510, 130, 32);
+		btnMenu.setBounds(90, 480, 130, 32);
 		btnMenu.setBorderPainted(false);
 		btnMenu.setFocusPainted(false);
 
-		label = new JLabel("매출 관리");
-		add(label);
-		label.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		label.setBounds(20, 50, 300, 40);
+//		label = new JLabel("매출 관리");
+//		add(label);
+//		label.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+//		label.setBounds(20, 50, 300, 40);
 
 		// 날짜 검색
 		JPanel dateSearch = new JPanel();
@@ -100,7 +100,7 @@ public class SalesRecords_Screen extends JFrame {
 		menuSearch.add(sp2);
 
 		add(menuSearch);
-		menuSearch.setBounds(90, 550, 500, 300);
+		menuSearch.setBounds(90, 520, 500, 300);
 
 		//날짜별 매출 조회
 		btnDate.addActionListener(new ActionListener() {
