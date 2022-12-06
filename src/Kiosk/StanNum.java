@@ -32,12 +32,7 @@ public class StanNum extends JFrame{
 	
 	setDisplay();
 	setComp();
-	
-	
 	}
-	
-	
-
 	public void setDisplay() {
 //		setUndecorated(true);
 		setVisible(true);

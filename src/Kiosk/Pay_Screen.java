@@ -73,7 +73,7 @@ public class Pay_Screen extends JFrame {
       card_btn.setBackground(Color.white);
       card_btn.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
-    		  new creditcard();
+    		  new CardFrame();
     		  dispose();
     	  }
       });

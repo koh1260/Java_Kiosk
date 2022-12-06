@@ -39,49 +39,50 @@ public class OrderCheck_Screen extends JFrame {
 
 	private Connection con;
 	private PreparedStatement ps;
-	
-	public class orderCa extends JPanel{
-		JLabel menuLi = new JLabel("메뉴",JLabel.CENTER);
-		JLabel menuCo = new JLabel("개수",JLabel.CENTER);
+
+	public class orderCa extends JPanel {
+		JLabel menuLi = new JLabel("메뉴", JLabel.CENTER);
+		JLabel menuCo = new JLabel("개수", JLabel.CENTER);
 		JLabel menuMo = new JLabel("가격", JLabel.CENTER);
-		
+
 		public orderCa() {
 			setBackground(Color.LIGHT_GRAY);
 			setLayout(null);
 			add(menuLi);
-			menuLi.setBounds(0,0,213,47);
+			menuLi.setBounds(0, 0, 213, 47);
 			menuLi.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			add(menuCo);
-			menuCo.setBounds(213,0,213,47);
+			menuCo.setBounds(213, 0, 213, 47);
 			menuCo.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			add(menuMo);
-			menuMo.setBounds(426,0,213,47);
+			menuMo.setBounds(426, 0, 213, 47);
 			menuMo.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		}
 	}
-	public class orderMenu extends JPanel{
+
+	public class orderMenu extends JPanel {
 		JLabel menuName = new JLabel();
 		JLabel menuCount = new JLabel();
 		JLabel menuPrice = new JLabel();
-		
+
 		public orderMenu() {
 			setBackground(new Color(245, 245, 245));
 			setLayout(null);
 			add(menuName);
-			menuName.setBounds(0,0,213,47);
+			menuName.setBounds(0, 0, 213, 47);
 			menuName.setHorizontalAlignment(JLabel.CENTER);
 			menuName.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			add(menuCount);
-			menuCount.setBounds(213,0,213,47);
+			menuCount.setBounds(213, 0, 213, 47);
 			menuCount.setHorizontalAlignment(JLabel.CENTER);
 			menuCount.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 			add(menuPrice);
-			menuPrice.setBounds(426,0,213,47);
+			menuPrice.setBounds(426, 0, 213, 47);
 			menuPrice.setHorizontalAlignment(JLabel.CENTER);
 			menuPrice.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		}
 	}
-	
+
 	class JFrameWindowClosingEventHandler extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {
 			JFrame frame = (JFrame) e.getWindow();
@@ -96,7 +97,7 @@ public class OrderCheck_Screen extends JFrame {
 
 		for (Menu menu : menus) {
 			if (menu.count != 0) {
-				order_list += menu.name + ": " + menu.count + "개 " + menu.count*menu.price +"원" + "<br>";
+				order_list += menu.name + ": " + menu.count + "개 " + menu.count * menu.price + "원" + "<br>";
 				total_m += (menu.count * menu.price);
 			}
 		}
@@ -111,9 +112,7 @@ public class OrderCheck_Screen extends JFrame {
 
 		setComponent();
 	}
-	
-	
-	
+
 	public void setComponent() {
 		JButton ok = new JButton(im);
 		JButton cancel = new JButton(im2);
@@ -136,15 +135,15 @@ public class OrderCheck_Screen extends JFrame {
 //		order_li.setFont(new Font("맑은 고딕", Font.BOLD, 27));
 //		order_li.setText(order_list);
 //		order_li.setHorizontalAlignment(JLabel.CENTER);
-		
+
 		add(orderLiPanel);
-		orderLiPanel.setLayout(new GridLayout(7,2));
+		orderLiPanel.setLayout(new GridLayout(7, 2));
 		orderLiPanel.setBounds(5, 80, 640, 330);
 		orderLiPanel.setBackground(new Color(245, 245, 245));
 		orderLiPanel.add(new orderCa());
-		
-		for(int i = 0; i < 6; i++) {
-			if(menus[i].count != 0) {
+
+		for (int i = 0; i < 6; i++) {
+			if (menus[i].count != 0) {
 				orderMenu mp = new orderMenu();
 				mp.menuName.setText(menus[i].name);
 				mp.menuCount.setText(Integer.toString(menus[i].count) + "개");
@@ -172,7 +171,7 @@ public class OrderCheck_Screen extends JFrame {
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User_Screen.us.dispose();
-				
+
 				String inQuery = "insert into sales_records (sales_date, sales_counts, menu_name, menu_price, total_m) values(?,?, ?, ?, ?)";
 				for (Menu menu : menus) {
 					if (menu.count > 0) {
@@ -204,7 +203,7 @@ public class OrderCheck_Screen extends JFrame {
 				setVisible(false);
 			}
 		});
-		
+
 		add(cancel);
 		cancel.setBounds(312, 465, 300, 90);
 		cancel.setOpaque(true);

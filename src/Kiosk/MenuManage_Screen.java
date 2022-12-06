@@ -108,8 +108,8 @@ public class MenuManage_Screen extends JFrame {
 		ImageIcon imgIcon = new ImageIcon("images/card.png");
 		JLabel img;
 		JLabel menuName = new JLabel("Name", JLabel.CENTER);
-		JButton btnIn = new JButton("In");
-		JButton btnOut = new JButton("Out");
+		JButton btnIn = new JButton("등록");
+		JButton btnOut = new JButton("삭제");
 		Menu menu;
 		int index;
 		
@@ -155,6 +155,7 @@ public class MenuManage_Screen extends JFrame {
 			
 			//-------------------------삭제 버튼-------------------------------------
 			add(btnOut);
+			btnOut.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			btnOut.setBounds(105, 242, 99, 40);
 			btnOut.setBackground(Color.LIGHT_GRAY);
 			btnOut.addActionListener(new ActionListener() {
@@ -186,6 +187,7 @@ public class MenuManage_Screen extends JFrame {
 			});
 			//-------------------------등록 버튼-------------------------------------
 			add(btnIn);
+			btnIn.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			btnIn.setBackground(Color.LIGHT_GRAY);
 			btnIn.setBounds(getVisibleRect());
 			btnIn.setBounds(3, 242, 99, 40);

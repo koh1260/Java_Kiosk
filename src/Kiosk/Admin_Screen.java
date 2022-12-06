@@ -40,6 +40,12 @@ public class Admin_Screen extends JFrame {
 		MemberBtn.setBorderPainted(false);
 		MemberBtn.setFocusPainted(false);
 		contentPane.add(MemberBtn);
+		MemberBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MemberManagement_Screen();
+				dispose();
+			}
+		});
 
 		OrderBtn = new JButton(new ImageIcon(getClass().getClassLoader().getResource("menumanage.png")));
 		OrderBtn.setBounds(70, 370, 550, 200);

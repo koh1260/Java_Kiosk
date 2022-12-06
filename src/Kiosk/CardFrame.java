@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class MoneyFrame extends JFrame {
+public class CardFrame extends JFrame {
 	Timer t;
 	private Font f1;
 	private Font f2;
@@ -21,7 +21,7 @@ public class MoneyFrame extends JFrame {
 	private Font f4;
 	private JLabel lbl1, lbl2, lbl3, lbl4;
 
-	public MoneyFrame() {
+	public CardFrame() {
 		ex.stan_number++;
 		setVisible(true);
 		setSize(700, 900);
@@ -51,16 +51,16 @@ public class MoneyFrame extends JFrame {
 		f3 = new Font("맑은 고딕", Font.BOLD, 30);
 		f4 = new Font("맑은 고딕", Font.BOLD, 30);
 
-		String[] text = { "현금을 넣어주세요. .", "현금을 넣어주세요. . .", "결제 중입니다.", "결제 중입니다. .", "결제 중입니다. . .", "결제가 완료되었습니다.",
+		String[] text = { "카드를 넣어주세요. .", "카드를 넣어주세요. . .", "결제 중입니다.", "결제 중입니다. .", "결제 중입니다. . .", "결제가 완료되었습니다.",
 				"결제가 완료되었습니다.", "결제가 완료되었습니다." };
 
 
-		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("money.png"));
+		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("card.png"));
 		Image image = img.getImage();
 		Image chimage = image.getScaledInstance(500, 450, Image.SCALE_SMOOTH);
 		JLabel imageLabel = new JLabel(new ImageIcon(chimage));
 
-		lbl2 = new JLabel("현금을 넣어주세요.", JLabel.CENTER);
+		lbl2 = new JLabel("카드를 넣어주세요.", JLabel.CENTER);
 
 		lbl2.setFont(f2);
 

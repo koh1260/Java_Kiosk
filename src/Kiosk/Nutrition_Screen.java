@@ -19,7 +19,7 @@ public class Nutrition_Screen extends JFrame{
 	private JLabel carbo_t = new JLabel("탄수화물",JLabel.CENTER);
 	private JLabel protein_t = new JLabel("단백질",JLabel.CENTER);
 	private JLabel fat_t = new JLabel("지방",JLabel.CENTER);
-	private JLabel kcal_t = new JLabel("kcal",JLabel.CENTER);
+	private JLabel kcal_t = new JLabel("칼로리",JLabel.CENTER);
 	
 	private JPanel carbo_p = new JPanel();
 	private JPanel protein_p = new JPanel();

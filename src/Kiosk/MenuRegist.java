@@ -82,36 +82,36 @@ public class MenuRegist extends JFrame {
 		JLabel kcal = new JLabel("칼로리(kcal)", JLabel.CENTER);
 
 		public NuPanel() {
-			setSize(400, 145);
+			setSize(400, 100);
 			setBackground(Color.LIGHT_GRAY);
 			
 			add(car);
-			car.setBounds(10,40,80,30);
+			car.setBounds(10,10,80,30);
 			car.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			
 			add(protein);
-			protein.setBounds(110, 40, 80, 30);
+			protein.setBounds(110, 10, 80, 30);
 			protein.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			
 			add(fat);
-			fat.setBounds(210, 40, 80, 30);
+			fat.setBounds(210, 10, 80, 30);
 			fat.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			
 			add(kcal);
-			kcal.setBounds(310, 40, 80, 30);
+			kcal.setBounds(310, 10, 80, 30);
 			kcal.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 			
 			add(tfCar);
-			tfCar.setBounds(10, 80, 80, 30);
+			tfCar.setBounds(10, 45, 80, 30);
 			
 			add(tfProtein);
-			tfProtein.setBounds(110, 80, 80, 30);
+			tfProtein.setBounds(110, 45, 80, 30);
 			
 			add(tfFat);
-			tfFat.setBounds(210, 80, 80, 30);
+			tfFat.setBounds(210, 45, 80, 30);
 			
 			add(tfKcal);
-			tfKcal.setBounds(310, 80, 80, 30);
+			tfKcal.setBounds(310, 45, 80, 30);
 		}
 	}
 	
@@ -123,9 +123,11 @@ public class MenuRegist extends JFrame {
 		pictureBox.setBounds(getBounds());
 		pictureBox.setBounds(165,30, 170, 180);
 		
-		btnOk = new JButton();
+		btnOk = new JButton(new ImageIcon("images/dng.png"));
+		btnOk.setBorderPainted(false);
+		btnOk.setFocusPainted(false);	
 		add(btnOk);
-		btnOk.setBounds(205, 550, 90, 32);
+		btnOk.setBounds(205, 510, 90, 32);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String menuQuery = "INSERT INTO menu (menu_num, menu_name, menu_price, menu_carbo, menu_protein, menu_fat, menu_kcal, image) values(?,?,?,?,?,?,?,?)";
@@ -159,9 +161,9 @@ public class MenuRegist extends JFrame {
 			}
 		});
 		
-		btnImgsel = new JButton();
+		btnImgsel = new JButton(new ImageIcon("images/imgsel.png"));
 		add(btnImgsel);
-		btnImgsel.setBounds(0,0,40,40);
+		btnImgsel.setBounds(133,30,32,32);
 		btnImgsel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc = new JFileChooser(System.getProperty("user.home"));
