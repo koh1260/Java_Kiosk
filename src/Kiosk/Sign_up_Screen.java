@@ -71,7 +71,9 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 		Pw_tf = new JPasswordField();
 		Phone_N_tf = new JTextField();
 		
-		Ok = new JButton(new ImageIcon("images/check.png"));
+		Ok = new JButton(new ImageIcon(getClass().getClassLoader().getResource("signok.png")));
+		Ok.setBorderPainted(false);
+		Ok.setFocusPainted(false);
 	}
 	public void setDisplay() {
 		add(Name);
@@ -158,7 +160,7 @@ public class Sign_up_Screen extends JFrame implements ActionListener{
 						
 						con.close();
 						JOptionPane.showMessageDialog(this, "회원가입 완료.");
-						setVisible(false);
+						dispose();
 
 					}                       
 				}catch(SQLException | ClassNotFoundException e1) {

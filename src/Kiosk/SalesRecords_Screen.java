@@ -61,14 +61,14 @@ public class SalesRecords_Screen extends JFrame {
 
 		//날짜 텍스트 박스, 버튼
 		add(tf);
-		tf.setBounds(90, 110, 130, 32);
+		tf.setBounds(113, 110, 130, 32);
 		add(btnDate);
-		btnDate.setBounds(235, 110, 90, 32);
+		btnDate.setBounds(257, 110, 90, 32);
 		btnDate.setBorderPainted(false);
 		btnDate.setFocusPainted(false);	
 		
 		add(btnMenu);
-		btnMenu.setBounds(90, 480, 130, 32);
+		btnMenu.setBounds(113, 480, 130, 32);
 		btnMenu.setBorderPainted(false);
 		btnMenu.setFocusPainted(false);
 

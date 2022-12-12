@@ -35,10 +35,10 @@ public class MenuRegist extends JFrame {
 	menuImage menuImg = new menuImage();
 	JLabel menuName = new JLabel("메뉴명", JLabel.CENTER);
 	JLabel menuPrice = new JLabel("가격", JLabel.CENTER);
-	JLabel pictureBox = new JLabel(new ImageIcon("images/titlebar.png"));
+	JLabel pictureBox = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
 	
-	JTextField tfName = new JTextField("name");
-	JTextField tfPrice = new JTextField("price");
+	JTextField tfName = new JTextField();
+	JTextField tfPrice = new JTextField();
 	JTextField tfCar = new JTextField();
 	JTextField tfProtein = new JTextField();
 	JTextField tfFat = new JTextField();
@@ -103,27 +103,35 @@ public class MenuRegist extends JFrame {
 			
 			add(tfCar);
 			tfCar.setBounds(10, 45, 80, 30);
+			tfCar.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+			tfCar.setHorizontalAlignment(JTextField.CENTER);
 			
 			add(tfProtein);
 			tfProtein.setBounds(110, 45, 80, 30);
+			tfProtein.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+			tfProtein.setHorizontalAlignment(JTextField.CENTER);
 			
 			add(tfFat);
 			tfFat.setBounds(210, 45, 80, 30);
+			tfFat.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+			tfFat.setHorizontalAlignment(JTextField.CENTER);
 			
 			add(tfKcal);
 			tfKcal.setBounds(310, 45, 80, 30);
+			tfKcal.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+			tfKcal.setHorizontalAlignment(JTextField.CENTER);
 		}
 	}
 	
 	public void setComponent() {
-		pictureBox = new JLabel();
+		pictureBox = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("demenu.png")));
 		add(pictureBox);
 		pictureBox.setOpaque(true);
 		pictureBox.setBackground(Color.LIGHT_GRAY);
 		pictureBox.setBounds(getBounds());
 		pictureBox.setBounds(165,30, 170, 180);
 		
-		btnOk = new JButton(new ImageIcon("images/dng.png"));
+		btnOk = new JButton(new ImageIcon(getClass().getClassLoader().getResource("dng.png")));
 		btnOk.setBorderPainted(false);
 		btnOk.setFocusPainted(false);	
 		add(btnOk);
@@ -161,7 +169,7 @@ public class MenuRegist extends JFrame {
 			}
 		});
 		
-		btnImgsel = new JButton(new ImageIcon("images/imgsel.png"));
+		btnImgsel = new JButton(new ImageIcon(getClass().getClassLoader().getResource("imgsel.png")));
 		add(btnImgsel);
 		btnImgsel.setBounds(133,30,32,32);
 		btnImgsel.addActionListener(new ActionListener() {
@@ -183,15 +191,6 @@ public class MenuRegist extends JFrame {
 				}
 				
 				System.out.println(imgPath);
-//				try {
-//					img = ImageIO.read(fc.getSelectedFile());
-//					 if (img != null) {
-//						 imgPath = fc.getSelectedFile().toString();
-//					 }
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
 			}
 		});
 		
@@ -205,15 +204,15 @@ public class MenuRegist extends JFrame {
 		
 		tfName.setBounds(175, 260, 150, 30);
 		add(tfName);
+		tfName.setHorizontalAlignment(JTextField.CENTER);
+		tfName.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		
 		tfPrice.setBounds(175,340 , 150, 30);
 		add(tfPrice);
-
-		icon = new ImageIcon("images/titlebar.png");
-//		img = icon.getImage();
-//		add(menuImg);
-//		menuImg.setBounds(165,30, 170, 180);
-//		menuImg.setBackground(Color.LIGHT_GRAY);
+		tfPrice.setHorizontalAlignment(JTextField.CENTER);
+		tfPrice.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		
+		icon = new ImageIcon(getClass().getClassLoader().getResource("titlebar.png"));
 		
 		add(np);
 		np.setLocation(50, 390);
@@ -221,7 +220,6 @@ public class MenuRegist extends JFrame {
 	}
 	
 	public void setDisplay() {
-//		setUndecorated(true);
 		setVisible(true);
 		setSize(500,600);
 		this.getContentPane().setBackground(Color.white);
@@ -231,5 +229,4 @@ public class MenuRegist extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 	}
-	
 }

@@ -105,7 +105,7 @@ public class MenuManage_Screen extends JFrame {
 	
 	//메뉴 정보가 담길 패널.
 	public class MenuPanel extends JPanel{
-		ImageIcon imgIcon = new ImageIcon("images/card.png");
+		ImageIcon imgIcon = new ImageIcon(getClass().getClassLoader().getResource("card.png"));
 		JLabel img;
 		JLabel menuName = new JLabel("Name", JLabel.CENTER);
 		JButton btnIn = new JButton("등록");
@@ -129,7 +129,6 @@ public class MenuManage_Screen extends JFrame {
 				menuName.setText("메뉴를 등록해주세요.");
 				btnIn.setEnabled(true);
 				btnOut.setEnabled(false);
-				
 			}else {
 				img = new JLabel("메뉴 이미지");
 				menuName.setText(menu.name);
@@ -138,7 +137,6 @@ public class MenuManage_Screen extends JFrame {
 				Image image = getToolkit().createImage(menu.imageByte);
 				Image chImage = image.getScaledInstance(191, 188, Image.SCALE_SMOOTH);
 				img.setIcon(new ImageIcon(chImage));
-				
 			}
 			
 			add(img);

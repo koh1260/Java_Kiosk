@@ -26,7 +26,7 @@ public class Nutrition_Screen extends JFrame{
 	private JPanel fat_p = new JPanel();
 	private JPanel kcal_p = new JPanel();
 	
-	private JLabel titlebar = new JLabel(new ImageIcon("images/nutitle.png"));
+	private JLabel titlebar = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("nutitle.png")));
 
 	class JFrameWindowClosingEventHandler extends WindowAdapter {
 		public void windowClosing(WindowEvent e) {

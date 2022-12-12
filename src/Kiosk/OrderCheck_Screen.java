@@ -116,7 +116,7 @@ public class OrderCheck_Screen extends JFrame {
 	public void setComponent() {
 		JButton ok = new JButton(im);
 		JButton cancel = new JButton(im2);
-		JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
+		JLabel title = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
 		JLabel ti = new JLabel();
 
 		Font font = new Font("맑은고딕", Font.BOLD, 35);
@@ -170,6 +170,7 @@ public class OrderCheck_Screen extends JFrame {
 
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				User_Screen.us.t.stop();
 				User_Screen.us.dispose();
 
 				String inQuery = "insert into sales_records (sales_date, sales_counts, menu_name, menu_price, total_m) values(?,?, ?, ?, ?)";

@@ -126,8 +126,7 @@ public class Login_Screen extends JFrame{
 		Sign_upB.setFocusPainted(false);	
 		Sign_upB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Sign_up_Screen si = new Sign_up_Screen();
-				si.setVisible(true);
+				new Sign_up_Screen();
 			}
 		});
 	}
@@ -139,7 +138,6 @@ public class Login_Screen extends JFrame{
 		setLayout(null);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		c.setBackground(Color.white);
-//		setUndecorated(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);

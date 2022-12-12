@@ -30,7 +30,7 @@ public class MemberManagement_Screen {
          frame.setResizable(false);
          
          // 타이틀 판넬
-         JLabel title = new JLabel(new ImageIcon("images/titlebar.png"));
+         JLabel title = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("titlebar.png")));
          title.setBounds(0, 0, 700, 40);
          title.setBackground(new Color(107, 167, 240));
          frame.getContentPane().add(title);
@@ -80,7 +80,7 @@ public class MemberManagement_Screen {
         frame.getContentPane().add(tf);
         
         // 홈 버튼
-        JButton home = new JButton(new ImageIcon("images/home.png"));
+        JButton home = new JButton(new ImageIcon(getClass().getClassLoader().getResource("home.png")));
         home.setBounds(624, 40, 60, 60);
         home.setBackground(Color.white);
         frame.getContentPane().add(home);
@@ -109,7 +109,7 @@ public class MemberManagement_Screen {
         g.add(rd2);
         
         // 검색 버튼
-        JButton rjator = new JButton(new ImageIcon("images/001.png"));
+        JButton rjator = new JButton(new ImageIcon(getClass().getClassLoader().getResource("001.png")));
         frame.getContentPane().add(rjator);
         rjator.setBounds(210, 120, 80, 32);
         rjator.setBorderPainted(false);
@@ -155,7 +155,7 @@ public class MemberManagement_Screen {
          });
 
         // 조회 버튼
-        JButton whghl = new JButton(new ImageIcon("images/refresh.png"));
+        JButton whghl = new JButton(new ImageIcon(getClass().getClassLoader().getResource("refresh.png")));
         frame.getContentPane().add(whghl);
         whghl.setBounds(425, 120, 32, 32);
         whghl.setForeground(Color.white);
@@ -191,7 +191,7 @@ public class MemberManagement_Screen {
            });
         
         // 수정 버튼;
-        JButton vuswlq = new JButton(new ImageIcon("images/002.png"));
+        JButton vuswlq = new JButton(new ImageIcon(getClass().getClassLoader().getResource("002.png")));
         vuswlq.setBorderPainted(false);
         vuswlq.setFocusPainted(false);	
         vuswlq.setBounds(465, 120, 80, 32);
@@ -212,7 +212,7 @@ public class MemberManagement_Screen {
            });
         
         // 삭제 버튼
-        JButton tkrwp = new JButton(new ImageIcon("images/003.png"));
+        JButton tkrwp = new JButton(new ImageIcon(getClass().getClassLoader().getResource("003.png")));
         tkrwp.setBorderPainted(false);
         tkrwp.setFocusPainted(false);	
         tkrwp.setBounds(555, 120, 80, 32);

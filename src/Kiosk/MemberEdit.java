@@ -73,7 +73,7 @@ public class MemberEdit {
         frame.getContentPane().add(tnwjd3);
         
       // 편집 버튼
-       JButton vuswlq = new JButton("수정완료");
+       JButton vuswlq = new JButton(new ImageIcon(getClass().getClassLoader().getResource("edit.png")));
         vuswlq.setBounds(20, 305, 257, 45);
         vuswlq.setFont(new Font("맑은 고딕", Font.BOLD, 17));
         vuswlq.setForeground(Color.white);

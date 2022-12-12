@@ -36,12 +36,12 @@ public class Initial_Screen extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
-		add(b);
-		b.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new Login_Screen();
-				dispose();
-			}
-		});
+//		add(b);
+//		b.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				new Login_Screen();
+//				dispose();
+//			}
+//		});
 	}
 }

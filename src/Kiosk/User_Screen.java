@@ -47,6 +47,7 @@ public class User_Screen extends JFrame{
 	private JButton pay_btn;
 	
 	public static User_Screen us;
+	public static Timer t;
 	
 	//--------------------------------생성자----------------------------------
 	public User_Screen() {
@@ -57,7 +58,7 @@ public class User_Screen extends JFrame{
 		setControlPanel();
 		
 		ActionListener listener = new setTimer();
-	    Timer t = new Timer(1000, listener);
+	    t = new Timer(1000, listener);
 	    t.start();
 	}
 	//--------------------------------Timer---------------------------------
@@ -434,7 +435,6 @@ public class User_Screen extends JFrame{
 		JLabel menu_name;
 		JLabel menu_price = new JLabel("1000원", JLabel.CENTER);
 		
-		private ImageIcon img = new ImageIcon("images/meal.jpeg");
 		
 		public Menu_panel() {
 			setLayout(null);			

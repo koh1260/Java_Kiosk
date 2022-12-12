@@ -36,7 +36,7 @@ public class CardFrame extends JFrame {
 		pay_north.setBounds(0, 0, 700, 150);
 		add(pay_north);
 
-		JLabel title_label = new JLabel("현금 결제");
+		JLabel title_label = new JLabel("카드 결제");
 		title_label.setBounds(210, 35, 410, 60);
 		title_label.setForeground(Color.white);
 		title_label.setFont(new Font("맑은 고딕", Font.BOLD, 60));
